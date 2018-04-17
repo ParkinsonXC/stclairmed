@@ -1,0 +1,35 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>St. Clair Med</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">St. Clair Med</a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'directory' %}">Directory</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'officers' %}">Officers</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'events' %}#">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospitals' %}">Hospitals</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'links' %}">Links</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contacts</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+
+  </body>
+</html>
