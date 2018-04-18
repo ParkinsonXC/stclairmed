@@ -14,16 +14,28 @@
     </div> <!--col div-->
     
     <div class="col-md-6">
-      <img src="https://www.stclair.org/assets/StClairAtAGlance.jpg" class="img-circle" />
+      <img src="https://www.stclair.org/assets/StClairAtAGlance.jpg" style="border-radius:20px" />
     </div>
   </div> <!--row div -->
 <hr/>
-  <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10 col-sm-12 text-center">
-      <p>TEST TEST TEST TEST TEST TEST TEST</p>
-          
-
-
-</div>
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="jumbotron page-header">
+        <h2>Our mission:<br/> <small>The St. Clair Count Medical Society</small></h2>
+        <p>acts as a liaison between organized medicine and the community, representing
+           its members before county, city, and state officials. SCCMS promotes quality
+            medical service for citizens of St. Clair County.
+        </p>
+      </div>
+    </div> 
+    <div class="col-lg-6 col-md-4">
+      <div class="jumbotron">
+        <h5>If you are a patient who needs a physician recommendation, please visit the
+           membership <a href="{% url 'directory' %}">directory</a>, to choose a quality physician in primary or
+            specialty care.</h5>
+      </div>
+    </div>
+  </div>
+</div> <!--container div-->
 
 {% endblock %}
