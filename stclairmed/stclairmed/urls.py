@@ -21,7 +21,6 @@ from boards import views
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^directory/$', views.directory, name='directory'),
-    url(r'^about/$', views.about, name='about'),
     url(r'^officers/$', views.officers, name='officers'),
     url(r'^events/$', views.events, name='events'),
     url(r'^news/$', views.news, name='news'),

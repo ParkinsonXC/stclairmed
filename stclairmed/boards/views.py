@@ -17,9 +17,6 @@ def directory(request):
 
     return render(request, 'directory.html')
 
-def about(request):
-    return render(request, 'about.html')
-
 def officers(request):
     return render(request, 'officers.html')
 
