@@ -18,29 +18,22 @@ def directory(request):
     return render(request, 'directory.html')
 
 def about(request):
-    response_html = '<h1>About Us Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'about.html')
 
 def officers(request):
-    response_html = '<h1>Officers Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'officers.html')
 
 def events(request):
-    response_html = '<h1>Events Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'events.html')
 
 def news(request):
-    response_html = '<h1>News Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'news.html')
 
 def hospitals(request):
-    response_html = '<h1>Hospitals Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'hospitals.html')
 
 def links(request):
-    response_html = '<h1>Links Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'links.html')
 
 def contact(request):
-    response_html = '<h1>Contact Page</h1>'
-    return HttpResponse(response_html) #TODO: Create template
+    return render(request, 'contact.html')
