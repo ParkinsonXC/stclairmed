@@ -27,7 +27,7 @@ def links(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def specialty_description(request, pk):
+def spec_description(request, pk):
     spec = get_object_or_404(Specialty, pk=pk)
 
-    return (request, 'directory.html')
+    return render(request, 'spec_description.html')

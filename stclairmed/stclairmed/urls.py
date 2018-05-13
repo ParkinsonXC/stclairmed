@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^hospitals/$', views.hospitals, name='hospitals'),
     url(r'^links/$', views.links, name='links'),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^specialty/(?P<pk>\d+)/$', views.spec_description, name="spec_description"),
     url(r'^admin/', admin.site.urls),
-    url(r'^speciality/(?P<id>\d+)/$', views.specialty_description),
+    
 ]
