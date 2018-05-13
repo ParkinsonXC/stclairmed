@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice
+from .forms import PracticeSearchForm
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
 def directory(request):
+    #TODO: Handle post requests
+    
     specialties = Specialty.objects.all()
-    return render(request, 'directory.html', {'specialties':specialties})
+    form = PracticeSearchForm()
+    
+    return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
 def officers(request):
     return render(request, 'officers.html')

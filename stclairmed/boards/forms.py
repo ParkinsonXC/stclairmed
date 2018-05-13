@@ -1,2 +1,17 @@
 from django import forms
-from .models import 
+from .models import Specialty, Practice
+
+class PracticeSearchForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=35,
+        help_text = "The max length of the name is 35 letters."        
+        )
+
+    address = forms.CharField(
+        max_length=50,
+        help_text="The max length of the address is 50 letters."
+        )
+
+    class Meta:
+        model = Practice
+        fields = ['name', 'address']
