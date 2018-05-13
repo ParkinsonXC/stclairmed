@@ -1,9 +1,74 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-  <h1>Directory page!</h1>
-</div>
+<div class="row">
+  <div class="col-6">
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <div class="page-header">
+        <h1>Directory / Search</h1>
+        </div>
+      <hr/>
+      <p>The St. Clair County Medical Society has a variety of members,
+        and grows larger all the time. Use the search function on this page 
+        to sort through them all. Whether you know only the name, or address,
+        you can search for them here.
+      </p>
+      </div>
+    </div>
+  </div><!--col div-->
+  <div class="col-6">
+    <div class="container">
+      <img src="https://cdn.discordapp.com/attachments/360202360087379968/444954280454127628/wristband_logo.png" />
+      <figcaption>TODO center this image</figcaption>
+    </div>
+  </div>
+
+</div><!--row div-->
+<hr/>
+<div class="row">
+  <div class="col-6">
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_name">Name</label>
+          <input type="text" class="form-control" id="id_name" name="subject">
+          <label for="id_address">Address</label>
+          <input type="text" class="form-control" id="id_address" name="address">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </div><!--col div-->
+
+</div> <!--row div-->
+<br/>
+
+<div class="row">
+  <div class="col-12">
+  <div class="container">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Specialty</th>
+        <th># of contacts</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for spec in specialties %}
+      <tr>
+        <td><a href="#" >{{spec.name}}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  </div><!--col div-->
 
 
-{% endblock body %}
+</div><!--row div-->
+
+
+
+{% endblock %}

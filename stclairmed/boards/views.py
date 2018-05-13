@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Specialty
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Specialty, Practice
 
 # Create your views here.
 def home(request):
@@ -8,14 +7,7 @@ def home(request):
 
 def directory(request):
     specialties = Specialty.objects.all()
-    spec_names = list()
-    
-    for field in specialties:
-        spec_names.append(field.name)
-
-    response_html = '<br>'.join(spec_names)
-
-    return render(request, 'directory.html')
+    return render(request, 'directory.html', {'specialties':specialties})
 
 def officers(request):
     return render(request, 'officers.html')
@@ -34,3 +26,8 @@ def links(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def specialty_description(request, pk):
+    spec = get_object_or_404(Specialty, pk=pk)
+
+    return (request, 'directory.html')

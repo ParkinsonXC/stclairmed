@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^links/$', views.links, name='links'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^admin/', admin.site.urls),
+    url(r'^speciality/(?P<id>\d+)/$', views.specialty_description),
 ]
