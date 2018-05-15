@@ -10,9 +10,15 @@ def directory(request):
     #TODO: Handle post requests
     
     specialties = Specialty.objects.all()
-    form = PracticeSearchForm()
+    practice_form = PracticeSearchForm()
     
-    return render(request, 'directory.html', {'specialties':specialties, 'form': form})
+    return render(request, 'directory.html', {'specialties':specialties, 'form': practice_form})
+
+def contact(request):
+    #TODO: Handle post requests
+
+
+    return render(request, 'contact.html')
 
 def officers(request):
     return render(request, 'officers.html')
@@ -28,9 +34,6 @@ def hospitals(request):
 
 def links(request):
     return render(request, 'links.html')
-
-def contact(request):
-    return render(request, 'contact.html')
 
 def spec_description(request, pk):
     spec = get_object_or_404(Specialty, pk=pk)

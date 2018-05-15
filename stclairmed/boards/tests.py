@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.urls import resolve
 from django.test import TestCase
-from .views import home, directory
+from .views import home, directory, contact
 
 # Create your tests here.
 class HomeTests(TestCase):
@@ -48,6 +48,17 @@ class DirectoryTests(TestCase):
     def test_directory_url_resolves_directory_view(self):
         view = resolve('/directory/')
         self.assertEquals(view.func, directory)
+
+class ContactTests(TestCase):
+
+    def test_contact_view_status_code(self):
+        url = reverse('contact')
+        response = self.client.get(url)
+        self.assertEquals(response.status_code, 200)
+
+    def test_contact_url_resolves_contact_view(self):
+        view = resolve('/contact/')
+        self.assertEquals(view.func, contact)
 
 class HospitalTests(TestCase):
 
