@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice
-from .forms import PracticeSearchForm
+from .forms import PracticeSearchForm, ContactForm
 
 # Create your views here.
 def home(request):
@@ -16,9 +16,9 @@ def directory(request):
 
 def contact(request):
     #TODO: Handle post requests
+    contact_form = ContactForm()
 
-
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', {'form':contact_form})
 
 def officers(request):
     return render(request, 'officers.html')

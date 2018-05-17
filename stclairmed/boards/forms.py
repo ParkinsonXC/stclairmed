@@ -34,4 +34,5 @@ class ContactForm(forms.ModelForm):
     )
 
     class Meta:
+        model = Specialty #TODO Add a new model that allows users to contact Elaine
         fields = ['name', 'phone', 'email', 'message']
