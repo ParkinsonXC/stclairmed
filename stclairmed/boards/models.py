@@ -24,10 +24,10 @@ class Practice(models.Model):
 
 
 class Doctor(models.Model):
-    first_name = models.CharField(max_length=25)
-    middle_init = models.CharField(max_length=1)
-    last_name = models.CharField(max_length=25)
-    title = models.CharField(max_length=10)
+    first_name = models.CharField(max_length=25, default='')
+    middle_init = models.CharField(max_length=1, default='')
+    last_name = models.CharField(max_length=25, default='')
+    title = models.CharField(max_length=10, default='')
     practice = models.ForeignKey(Practice, related_name='doctors', on_delete='CASCADE')
     specialty = models.ForeignKey(Specialty, related_name='doctors', on_delete='CASCADE')
 
