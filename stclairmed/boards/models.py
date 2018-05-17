@@ -8,6 +8,8 @@ class Specialty(models.Model):
     def __str__(self):
         return self.name
 
+#This is a comment in order to activate the branch
+
 class Practice(models.Model):
     name = models.CharField(max_length=45, unique=True)
     address = models.CharField(max_length = 50, unique=True)
