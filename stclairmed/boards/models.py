@@ -16,17 +16,20 @@ class Practice(models.Model):
     city = models.CharField(max_length=25, default='')
     state = models.CharField(max_length=25, default='IL')
     zip_code = models.CharField(max_length=5, default='')
+    phone_number = models.CharField(max_length=11, default='')
+    website = models.CharField(max_length=50, default='')
 
     def __str__(self):
-        return self.name
+        return f'{self.address} {self.city}, {self.state} {self.zip_code}' 
 
 
 class Doctor(models.Model):
     first_name = models.CharField(max_length=25)
+    middle_init = models.CharField(max_length=1)
     last_name = models.CharField(max_length=25)
-    number = models.CharField(max_length=10)
+    title = models.CharField(max_length=10)
     practice = models.ForeignKey(Practice, related_name='doctors', on_delete='CASCADE')
     specialty = models.ForeignKey(Specialty, related_name='doctors', on_delete='CASCADE')
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return f'{self.last_name}, {self.first_name}'
