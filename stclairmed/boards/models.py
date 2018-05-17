@@ -20,7 +20,7 @@ class Practice(models.Model):
     website = models.CharField(max_length=50, default='')
 
     def __str__(self):
-        return f'{self.address} {self.city}, {self.state} {self.zip_code}' 
+        return '{0} {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip_code)
 
 
 class Doctor(models.Model):
@@ -32,4 +32,4 @@ class Doctor(models.Model):
     specialty = models.ForeignKey(Specialty, related_name='doctors', on_delete='CASCADE')
 
     def __str__(self):
-        return f'{self.last_name}, {self.first_name}'
+        return '{0}, {1}'.format(self.last_name, self.first_name)
