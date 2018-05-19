@@ -1,4 +1,4 @@
-.navbar , .jumbotron {
+body {
   font-family: 'Nunito', sans-serif;
 }
 
@@ -8,9 +8,6 @@
   
 }
 
-.logo {
-  font-size:200px;
-}
 @media screen and (max-width: 768px) {
   .col-sm-4 {
       text-align: center;
@@ -23,6 +20,9 @@
   background-color: rgb(228, 182, 237);
 }
 
+.bg-grey {
+  background-color: #f6f6f6;
+}
 
 .list-group-item {
 background-color: transparent;

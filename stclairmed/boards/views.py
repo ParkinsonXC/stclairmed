@@ -4,7 +4,9 @@ from .forms import PracticeSearchForm, ContactForm
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    #TODO: handle post requests
+    contact_form = ContactForm()
+    return render(request, 'home.html', {'form':contact_form})
 
 def directory(request):
     #TODO: Handle post requests

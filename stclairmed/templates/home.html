@@ -22,7 +22,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h1>About St. Clair Medical Society</h1>
+      <h2>About St. Clair Medical Society</h2>
       <h4>For over 135 years the SCCMS has worked to maintain quality 
           medical care in St. Clair County.
       </h4>
@@ -34,14 +34,14 @@
     
     <div class="col-sm-4">
       <div style="font-size:3em; color:lightblue; text-align:center;">
-        <i class="fas fa-book-open fa-3x"></i>
+        <i class="fas fa-sitemap fa-3x"></i>
       </div>
     </div><!--col-->
 
   </div><!--row-->
 </div><!--container-fluid-->
 
-<div class="container-fluid bg-purple">
+<div class="container-fluid bg-grey">
   <div class="row">
     <div class="col-sm-4">
         <div style="font-size:3em; color:purple; text-align:center;">    
@@ -71,16 +71,66 @@
       </div><br/>
       <h4>ARTICLES</h4>
       <p>Articles from our members and readers are welcome and will be published as space 
-          permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
-          be subject to editing and abridgment.
+          permits in the combined SCCMS and MCMS monthly bulletin.
       </p>
+    </div><!--col-->
+    
+    <div class="col-sm-4">
+      <div style="font-size:3em; color:tomato; text-align:center;">    
+          <a href="{% url 'hospitals' %}"><i class="fas fa-hospital-symbol fa-lg"></i></a>
+      </div><br/>
+      <h4><a href="{% url 'hospitals' %}">HOSPITALS</a></h4>
+      <p>You can find a local list of the hospitals within the society here.</p>
+    </div><!--col-->
+
+    <div class="col-sm-4">
+      <div style="font-size:3em; color:tomato; text-align:center;">    
+        <a href="{% url 'news' %}"><i class="fas fa-newspaper fa-lg"></i></a>
+      </div><br/>
+      <h4><a href="{% url 'news' %}">NEWS | EVENTS</a></h4>
+      <p>You can find all our announcments and upcoming events here.</p>
     </div><!--col-->
 
 
   </div><!--row-->
 </div><!--container-->
 
+<div class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll do our best to reply within 24 business hours.</p>
+      <p><i class="fas fa-map-marker-alt"></i> Belleville, IL</p>
+      <p><i class="fas fa-phone"></i> 618-397-5315</p>
+      <p><i class="fas fa-envelope"></i> stclairmed96@gmail.com</p>
+    </div><!--col-->
 
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name"
+          type="text" required>
+        </div><!--col-->
+
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email"
+          type="email" required>
+        </div><!--col-->
+      </div><!--row-->
+
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
+      rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div><!--col-->
+      </div><!--row-->
+    </div><!--col-->
+  </div><!--row-->
+</div><!--container-->
+
+
+<!--EDIT THINGS ABOVE THIS HR-->
 <hr/>
   <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-10">
