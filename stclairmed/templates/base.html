@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer-white.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
   </head>
 
   <body class="bg-1">
@@ -26,10 +28,9 @@
       </ul>
     </nav>
 
-    <div class="container">
+
     {% block body %}
     {% endblock body %}
-    </div>
 
     <footer id="myFooter">
       <div class="container">

@@ -1,30 +1,91 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  <div class="row">
-    <div class="col-md-6">
-      <div class="jumbotron">
-        <div class="container-fluid text-center">
-          <h1>.</p>
+<div class = "jumbotron text-center">
+    <h1>Welcome to the St. Clair Medical Society</h1>
+    <h5>For over 135 years the SCCMS has worked to maintain 
+      quality medical care in St. Clair County.</h5>
+    <p>You may search for keywords here, or navigate to our directory 
+      to search for doctors and practices.
+    </p>
+    <form class="form-inline justify-content-center">
+        <div class="input-group">
+          <input type="email" class="form-control" size="50" placeholder="Keywords" required>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-primary">Search</button>
+          </div>
         </div>
+      </form>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>About St. Clair Medical Society</h1>
+      <h4>For over 135 years the SCCMS has worked to maintain quality 
+          medical care in St. Clair County.
+      </h4>
+      <p>If you are a patient who needs a physician recommendation, please visit the
+        membership <a href="{% url 'directory' %}">directory</a>, to 
+        choose a quality physician in primary or specialty care.
+      </p>
+    </div><!--col-->
+    
+    <div class="col-sm-4">
+      <div style="font-size:3em; color:lightblue; text-align:center;">
+        <i class="fas fa-book-open fa-3x"></i>
       </div>
-    </div> <!--col div-->
-    <div class="col-md-6">
-      <img src="https://media.istockphoto.com/photos/hospital-building-picture-id522004008" style="border-radius:20px; max-width:500px; max-height: 350px;"  />
-      <figcaption>Placeholder photo</figcaption>
-    </div>
-  </div> <!--row div -->
+    </div><!--col-->
+
+  </div><!--row-->
+</div><!--container-fluid-->
+
+<div class="container-fluid bg-purple">
+  <div class="row">
+    <div class="col-sm-4">
+        <div style="font-size:3em; color:purple; text-align:center;">    
+          <i class="fas fa-hospital fa-3x"></i>
+        </div>
+    </div><!--col-->
+    
+    <div class="col-sm-8">
+      <h2>Our Values</h2>
+      <h4><strong>Our Mission:</strong>The St. Clair County Medical Society 
+        acts as a liaison between organized medicine and the community, representing 
+        its members before county, city, and state officials. SCCMS promotes quality 
+        medical service for citizens of St. Clair County.</h4>
+    </div><!--col-->
+
+    </div><!--row-->
+</div><!--container-->
+
+<div class="container-fluid text-center">
+  <h2>SERVICES</h2>
+  <h4>What we can do for you</h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div style="font-size:3em; color:tomato; text-align:center;">    
+        <i class="fas fa-file-alt fa-lg"></i>
+      </div><br/>
+      <h4>ARTICLES</h4>
+      <p>Articles from our members and readers are welcome and will be published as space 
+          permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
+          be subject to editing and abridgment.
+      </p>
+    </div><!--col-->
+
+
+  </div><!--row-->
+</div><!--container-->
+
 
 <hr/>
-
   <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-10">
       <div class="jumbotron page-header">
-        <h5>If you are a patient who needs a physician recommendation, please visit the
-           membership <a href="'{% url 'directory' %}'">directory</a>, to choose a quality physician in primary or
-            specialty care.
-            TODO:MOVE THINGS AROUND?
-        </h5>
+        
       </div>
     </div> 
     <div class="col-lg-6 col-md-4">

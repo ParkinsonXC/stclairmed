@@ -3,14 +3,24 @@
 }
 
 .jumbotron {
-  background: rgba(152,251,152, 0.1); 
+  padding: 100px 25px;
+  background-color:rgb(182, 237, 188);
+  
 }
 
-.bg-1 {
-background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.logo {
+  font-size:200px;
+}
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+  }
+}
 
+
+.bg-purple {
+  background-color: rgb(228, 182, 237);
 }
 
 
@@ -19,6 +29,10 @@ background-color: transparent;
 border-top: 1px solid #A1FFCE;
 border-radius: .5;
 color: #681080;
+}
+
+.container-fluid {
+  padding: 60px 50px;
 }
 
 hr {
