@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice, Doctor
 from .forms import PracticeSearchForm, ContactForm
+from events.models import Event
 
 # Create your views here.
 def home(request):
@@ -26,7 +27,8 @@ def officers(request):
     return render(request, 'officers.html')
 
 def events(request):
-    return render(request, 'events.html')
+    events = reversed(Event.objects.all())
+    return render(request, 'events.html', {'events':events})
 
 def news(request):
     return render(request, 'news.html')
