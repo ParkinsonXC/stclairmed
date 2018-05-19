@@ -7,11 +7,9 @@ class SearchForm(forms.Form):
         help_text = "The max length of the name is 35 letters."        
         )
 
-    choices = (('1', 'Practices',),('2', 'Specialty',),('3', 'Doctor',),('4', 'All',))
-    field = forms.ChoiceField(
-        widget=forms.RadioSelect(
-            attrs={'class':'form-check-inline'}
-        ), 
+    choices = (('practices', 'Practices',),('specialty', 'Specialty',),('doctors', 'Doctors',),('all', 'All',))
+    my_choice_field = forms.ChoiceField(
+        widget=forms.RadioSelect(), 
         choices=choices,
         help_text="Test test")
     

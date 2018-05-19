@@ -13,8 +13,8 @@ def directory(request):
     
     specialties = Specialty.objects.all()
     search_form = SearchForm()
-    
-    return render(request, 'directory.html', {'specialties':specialties, 'form': search_form})
+
+    return render(request, 'directory.html', {'specialties':specialties, 'form':search_form})
 
 def contact(request):
     #TODO: Handle post requests

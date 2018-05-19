@@ -15,33 +15,9 @@
     </div><!--col-->
 
     <div class="col-sm-6 form-group">
-      <form method="">
-        <div class="input-group">
-          <input type="text" class="form-control" size="50" placeholder="Keywords" required>
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-primary">Search</button>
-          </div>
-        </div><br/>
-        <div class="form-check-inline">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" value="">Specialty
-          </label>
-        </div>
-        <div class="form-check-inline">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" value="">Practices
-          </label>
-        </div>
-        <div class="form-check-inline disabled">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" value="">Doctors
-          </label>
-        </div>
-        <div class="form-check-inline disabled">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" value="">All
-          </label>
-          </div>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
       </form>
     </div><!--col-->
 
