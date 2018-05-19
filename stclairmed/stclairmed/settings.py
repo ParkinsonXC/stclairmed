@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     
     'boards', 
+    'events',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+TIME_INPUT_FORMATS = ['%I:%M %p',]
