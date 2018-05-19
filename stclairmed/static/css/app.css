@@ -1,24 +1,55 @@
-.navbar , .jumbotron {
+body {
   font-family: 'Nunito', sans-serif;
 }
 
+.navbar {
+  margin-bottom: 0;
+  background-color:rgb(182, 237, 188);
+  z-index:9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height:1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+  color: darkblue !important;
+}
+
+.navbar-toggler{
+  background-color: rgb(236, 136, 243) !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #000000 !important;
+  background-color: rgb(236, 136, 243) !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+
 .jumbotron {
-  background: rgba(152,251,152, 0.1); 
+  padding: 100px 25px;
+  background-color:rgb(182, 237, 188);
+  
 }
 
-.bg-1 {
-background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+  }
 }
 
+.bg-grey {
+  background-color: #f6f6f6;
+}
 
-.list-group-item {
-background-color: transparent;
-border-top: 1px solid #A1FFCE;
-border-radius: .5;
-color: #681080;
+.container-fluid {
+  padding: 60px 50px;
 }
 
 hr {
@@ -28,4 +59,54 @@ hr {
   border-top: 1px solid rgba(19, 148, 207, 0.705);
   margin: 1em 0;
   padding: 0; 
+}
+
+h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.slideanim {visibility:hidden;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
 }
