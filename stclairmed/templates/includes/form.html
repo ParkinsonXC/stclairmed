@@ -1,7 +1,15 @@
 {% load widget_tweaks %}
 
-{% for field in form %}
+<form>
   <div class="form-group">
+    {% render_field form.term class="form-control" %}
+  </div>
+  <div class="form-check form-check-inline">
+    {% render_field form.field class="form-check-input" type="radio" id= %}
+  </div>
+</form>
+
+  <!-- <div class="form-group">
     {{ field.label_tag }}
 
     {% if form.is_bound %}
@@ -24,5 +32,4 @@
         {{ field.help_text }}
       </small>
     {% endif %}
-  </div>
-{% endfor %}
+  </div> -->

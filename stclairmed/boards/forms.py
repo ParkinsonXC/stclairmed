@@ -1,22 +1,25 @@
 from django import forms
-from .models import Specialty, Practice
+from .models import Specialty, Practice, Doctor
 
-class PracticeSearchForm(forms.ModelForm):
-    name = forms.CharField(
+class SearchForm(forms.Form):
+    term = forms.CharField(
         max_length=35,
         help_text = "The max length of the name is 35 letters."        
         )
 
-    address = forms.CharField(
-        max_length=50,
-        help_text="The max length of the address is 50 letters."
-        )
+    choices = (('1', 'Practices',),('2', 'Specialty',),('3', 'Doctor',),('4', 'All',))
+    field = forms.ChoiceField(
+        widget=forms.RadioSelect(
+            attrs={'class':'form-check-inline'}
+        ), 
+        choices=choices,
+        help_text="Test test")
+    
 
     class Meta:
-        model = Practice
-        fields = ['name', 'address']
+        fields = ['term', 'field']
 
-class ContactForm(forms.ModelForm):
+class ContactForm(forms.Form):
     name = forms.CharField(
         max_length=35,
     )
@@ -34,5 +37,4 @@ class ContactForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Specialty #TODO Add a new model that allows users to contact Elaine
         fields = ['name', 'phone', 'email', 'message']
