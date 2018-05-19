@@ -20,6 +20,8 @@ class Practice(models.Model):
     website = models.CharField(max_length=50, default='')
 
     def __str__(self):
+        if len(self.name) > 0:
+            return self.name
         return '{0} {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip_code)
 
 
