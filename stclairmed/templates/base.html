@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 
   </head>
 
   <body class="bg-1">
-    <nav class="navbar navbar-expand">
+    <nav class="navbar navbar-expand fixed-top">
+      <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">St. Clair Medical Society <img src="https://cdn.discordapp.com/attachments/360202360087379968/444954612588347392/MedSocEmblem.png" style="max-height: 25px"/></a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="{% url 'directory' %}">Directory</a></li>
@@ -24,8 +26,9 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'hospitals' %}">Hospitals</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'links' %}">Links</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>      
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>      
       </ul>
+      </div><!--container-->
     </nav>
 
 
