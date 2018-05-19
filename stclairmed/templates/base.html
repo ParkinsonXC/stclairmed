@@ -9,28 +9,34 @@
     <link rel="stylesheet" href="{% static 'css/footer-white.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
 
   </head>
 
   <body class="bg-1">
-    <nav class="navbar navbar-expand fixed-top">
-      <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">St. Clair Medical Society <img src="https://cdn.discordapp.com/attachments/360202360087379968/444954612588347392/MedSocEmblem.png" style="max-height: 25px"/></a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="{% url 'directory' %}">Directory</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'officers' %}">Officers</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'hospitals' %}">Hospitals</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'links' %}">Links</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>      
-      </ul>
-      </div><!--container-->
-    </nav>
 
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">St. Clair Medical Society</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'directory' %}">Directory</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'officers' %}">Officers</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospitals' %}">Hospitals</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'links' %}">Links</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
 
     {% block body %}
     {% endblock body %}

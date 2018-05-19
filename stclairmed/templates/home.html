@@ -5,7 +5,7 @@
     <h1>Welcome to the St. Clair Medical Society</h1>
     <h5>For over 135 years the SCCMS has worked to maintain 
       quality medical care in St. Clair County.</h5>
-    <p>You may search for keywords here, or navigate to our directory 
+    <p>You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
       to search for doctors and practices.
     </p>
     <form class="form-inline justify-content-center">
@@ -65,15 +65,6 @@
   <h4>What we can do for you</h4>
   <br>
   <div class="row slideanim">
-    <div class="col-sm-4">
-      <div style="font-size:3em; color:tomato; text-align:center;">    
-        <i class="fas fa-file-alt fa-lg"></i>
-      </div><br/>
-      <h4>ARTICLES</h4>
-      <p>Articles from our members and readers are welcome and will be published as space 
-          permits in the combined SCCMS and MCMS monthly bulletin.
-      </p>
-    </div><!--col-->
     
     <div class="col-sm-4">
       <div style="font-size:3em; color:tomato; text-align:center;">    
@@ -82,6 +73,16 @@
       <h4><a href="{% url 'hospitals' %}">HOSPITALS</a></h4>
       <p>You can find a local list of the hospitals within the society here.</p>
     </div><!--col-->
+
+    <div class="col-sm-4">
+        <div style="font-size:3em; color:tomato; text-align:center;">    
+          <i class="fas fa-file-alt fa-lg"></i>
+        </div><br/>
+        <h4>ARTICLES</h4>
+        <p>Articles from our members and readers are welcome and will be published as space 
+            permits in the combined SCCMS and MCMS monthly bulletin.
+        </p>
+      </div><!--col-->
 
     <div class="col-sm-4">
       <div style="font-size:3em; color:tomato; text-align:center;">    
@@ -128,64 +129,5 @@
     </div><!--col-->
   </div><!--row-->
 </div><!--container-->
-
-
-<!--EDIT THINGS ABOVE THIS HR-->
-<hr/>
-  <div class="row">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-      <div class="jumbotron page-header">
-        
-      </div>
-    </div> 
-    <div class="col-lg-6 col-md-4">
-      <div class="jumbotron">
-        <h2>Our mission:<br/> <small>The St. Clair County Medical Society...</small></h2>
-        <p>acts as a liaison between organized medicine and the community, representing
-           its members before county, city, and state officials. SCCMS promotes quality
-            medical service for citizens of St. Clair County.
-        </p>
-      </div>
-    </div>
-  </div> <!-- row div -->
-<hr/>
-  <div class="row">
-    <div class="col-lg-5 col-md-6 col-sm-10">
-      <div class="jumbotron">
-        <h2>Articles</h2>
-        <p>from our members and readers are welcome and will be published as 
-          space permits, in the combined SCCMS and MCMS monthly bulletin. Articles
-          will be subject to editing and abridgment. Articles should be submitted
-          typewritten and before the tenth of each month, prior to the 
-          publication month.
-        </p><br/>
-
-        <div class="text-center">
-        <ul class="list-group">
-          <li class="list-group-item"><a href="http://www.stclairmed.com/news/March%202018%20News%20Letter%20Final.pdf">March 2018 PDF Newsletter</a></li>
-          <li class="list-group-item"><a href="http://www.stclairmed.com/news/February%202018%20New%20Letter.pdf">February 2018 PDF Newsletter</a></li>
-          <li class="list-group-item"><a href="http://www.stclairmed.com/news/January2018Newsetter.pdf">January 2018 PDF Newsletter</a></li>
-        </ul>
-        </div><br/>
-
-
-        <h2>Comments?</h2>
-        <p>The St. Clair County Medical Society welcomes any comments or suggestions
-         that you may have. We value your membership and look forward to 
-         providing you with valuable membership benefits. 
-         Please <a href="{% url 'contact' %}">click here</a> for more information.
-        </p>
-
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="jumbotron">
-        <img src="http://www.stclairmed.com/news/March%202018%20News%20Letter%20Final-1.jpg"/>
-      </div>
-    </div>
-
-    
-  </div><!--row div-->
-
 
 {% endblock body %}

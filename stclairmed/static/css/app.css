@@ -7,8 +7,8 @@ body {
   background-color:rgb(182, 237, 188);
   z-index:9999;
   border: 0;
-  font-size: 12px;
-  line-height:1.42857143;
+  font-size: 12px !important;
+  line-height:1.42857143 !important;
   letter-spacing: 4px;
   border-radius: 0;
 }
@@ -17,9 +17,13 @@ body {
   color: darkblue !important;
 }
 
+.navbar-toggler{
+  background-color: rgb(236, 136, 243) !important;
+}
+
 .navbar-nav li a:hover, .navbar-nav li.active a {
   color: #000000 !important;
-  background-color: rgb(163, 63, 172) !important;
+  background-color: rgb(236, 136, 243) !important;
 }
 
 .navbar-default .navbar-toggle {
@@ -42,13 +46,6 @@ body {
 
 .bg-grey {
   background-color: #f6f6f6;
-}
-
-.list-group-item {
-background-color: transparent;
-border-top: 1px solid #A1FFCE;
-border-radius: .5;
-color: #681080;
 }
 
 .container-fluid {
