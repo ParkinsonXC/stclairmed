@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Description of specialty will go here along with doctors/practices</h1>
+<div class="jumbotron">
+    <h1>All {{ specialty.name }} Practices</h1>
+</div> 
+<div class="jumbotron">
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Middle</th>
+            <th>Title</th>
+            <th>Practice</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doctor in specialty.doctors.all %}
+        <tr>
+            <td>{{doctor.last_name}}</td>
+            <td>{{doctor.first_name}}</td>
+            <td>{{doctor.middle_init}}</td>
+            <td>{{doctor.title}}</td>
+            <td>{{doctor.practice}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
 {% endblock %}
