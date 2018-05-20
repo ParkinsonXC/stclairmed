@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.conf.urls import url
 
 from boards import views
+from events import events_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^directory/$', views.directory, name='directory'),
     url(r'^officers/$', views.officers, name='officers'),
     url(r'^events/$', views.events, name='events'),
+    url(r'^events/rsvp/(?P<pk>\d+)', events_views.event_rsvp, name='event_rsvp'),
     url(r'^news/$', views.news, name='news'),
     url(r'^hospitals/$', views.hospitals, name='hospitals'),
     url(r'^links/$', views.links, name='links'),

@@ -15,10 +15,21 @@
                 {{event.date_of}} at {{event.time_of}}
                 <small class='text-muted d-block'>Attendees: {{event.attendees}}</small>
             </h4>
-            <pre><p>{{event.description}}</p></pre>          
+            <pre><p>{{event.description}}</p></pre>
+            <button class='btn btn-primary btn-rsvp'>RSVP</button> <!--Implement RSVP overlay form-->
         </div>
     </div>
 </div>
 <hr />
 {% endfor %}
+<div id='overlay'>
+    <div class="container">
+    <form method="post" novalidate>
+        <table>
+            {{form}}
+        </table>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
 {% endblock body %}

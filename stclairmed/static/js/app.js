@@ -33,4 +33,11 @@ $(window).scroll(function() {
         });
       } // End if
     });
+
+
+    $(".btn-rsvp").on("click", function(event) {
+      // Use overlay functionality to dynamically produce an RSVP form per event
+      e1 = document.getElementById("overlay");
+      e1.style.visibility = (e1.style.visibility == "visible") ? "hidden": "visible";
+    });
   })
