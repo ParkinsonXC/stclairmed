@@ -83,6 +83,14 @@ h4 {
   margin-bottom: 30px;
 }
 
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
 .slideanim {visibility:hidden;}
 .slide {
     /* The name of the animation */
