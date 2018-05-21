@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice, Doctor
 from .forms import PracticeSearchForm, ContactForm
 
+# The import below has been added for newsletter functionality
+from newsletters.models import Newsletter
+
+
+
+
 # Create your views here.
 def home(request):
     #TODO: handle post requests
@@ -41,3 +47,9 @@ def spec_description(request, pk):
     specialty = get_object_or_404(Specialty, pk=pk)
 
     return render(request, 'spec_description.html', {'specialty': specialty})
+
+def newsletter(request):
+    
+    newsletters = Newsletter.objects.all()
+    
+    return render(request, 'newsletter.html', {'newsletters' : newsletters})

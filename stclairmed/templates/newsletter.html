@@ -1,0 +1,17 @@
+
+
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>NEWSLETTERS</h1>
+
+    {% for newsletter in newsletters %}
+        <a href="{{ newsletter.pdf_file.url }}">
+            <img src="{{ newsletter.pdf_img.url }}"/>
+        </a>
+    {% endfor %}
+    
+</div>
+
+{% endblock body %}

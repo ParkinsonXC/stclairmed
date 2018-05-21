@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 
 from boards import views
 
@@ -24,6 +26,7 @@ urlpatterns = [
     url(r'^officers/$', views.officers, name='officers'),
     url(r'^events/$', views.events, name='events'),
     url(r'^news/$', views.news, name='news'),
+    url(r'^newsletter/$', views.newsletter, name='newsletter'),
     url(r'^hospitals/$', views.hospitals, name='hospitals'),
     url(r'^links/$', views.links, name='links'),
     url(r'^contact/$', views.contact, name='contact'),
@@ -31,3 +34,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
