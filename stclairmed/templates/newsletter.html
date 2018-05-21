@@ -4,14 +4,20 @@
 
 {% block body %}
 <div class="container-fluid">
-    <h1>NEWSLETTERS</h1>
-
-    {% for newsletter in newsletters %}
-        <a href="{{ newsletter.pdf_file.url }}">
-            <img src="{{ newsletter.pdf_img.url }}"/>
-        </a>
-    {% endfor %}
-    
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center">
+            <h1>NEWSLETTERS</h1>
+            {% for newsletter in newsletters %}
+                <br>
+                <h3>{{ newsletter.month }} {{ newsletter.year }}</h3>
+                <a href="{{ newsletter.pdf_file.url }}">
+                    <img width="480" height="620" src="{{ newsletter.pdf_img.url }}"/>
+                </a>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 {% endblock body %}

@@ -50,6 +50,6 @@ def spec_description(request, pk):
 
 def newsletter(request):
     
-    newsletters = Newsletter.objects.all()
-    
+    newsletters = reversed(Newsletter.objects.all())
+
     return render(request, 'newsletter.html', {'newsletters' : newsletters})
