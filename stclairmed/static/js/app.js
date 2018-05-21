@@ -46,4 +46,8 @@ $(window).scroll(function() {
 
       $(".event-id").attr("value", eventId);
     });
+
+    $(".rsvp-cancel").on("click", function(event) {
+      $("#overlay").css("visibility", "hidden");
+    });
   })

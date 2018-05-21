@@ -42,6 +42,7 @@ def events(request):
                 event=event
             )
             # TODO: Send verification email to user
+            # TODO: Increment event 'attendees' field for each rsvp + guests
             return render(request, 'rsvp_confirm.html', {'email':rsvp.email})
     else:
         form = RsvpForm()
