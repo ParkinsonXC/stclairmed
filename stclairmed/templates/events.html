@@ -8,7 +8,7 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+        <div class="col-sm-8" id="event-{{event.pk}}">
             <h2>{{event.title}}</h2>
             <h4>{{event.location}}</h4>
             <h4>
@@ -16,6 +16,7 @@
                 <small class='text-muted d-block'>Attendees: {{event.attendees}}</small>
             </h4>
             <pre><p>{{event.description}}</p></pre>
+            <input type="hidden" name="event_id" value="{{event.pk}}">
             <button class='btn btn-primary btn-rsvp'>RSVP</button> <!--Implement RSVP overlay form-->
         </div>
     </div>
@@ -25,10 +26,10 @@
 <div id='overlay'>
     <div class="container">
     <form method="post" novalidate>
-        <table>
-            {{form}}
-        </table>
-        <button class="btn btn-primary">Submit</button>
+        {% csrf_token %}
+        {% include 'includes/rsvp_form.html' %}
+        <a href="#" class="btn rsvp-cancel">Cancel</a>
+        <a class="btn btn-primary rsvp-submit">Submit</a>
     </form>
     </div>
 </div>
