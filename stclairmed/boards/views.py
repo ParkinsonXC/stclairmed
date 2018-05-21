@@ -29,12 +29,9 @@ def officers(request):
 
 def events(request):
     events = reversed(Event.objects.all()) # Show newest event first
-    form = RsvpForm()
-    return render(request, 'events.html', {'events':events, 'form':form})
-
-def event_rsvp(request, pk):
     if request.method == 'POST':
-        event = get_object_or_404(Event, pk)
+        pk = request.POST['event-id']
+        event = get_object_or_404(Event, pk=pk)
         form = RsvpForm(request.POST)
         if form.is_valid():
             rsvp = RSVP.objects.create(
@@ -44,9 +41,12 @@ def event_rsvp(request, pk):
                 guests=form.cleaned_data.get('guests'),
                 event=event
             )
-            return render(request, 'event_confirm.html', {'email':rsvp.email})
+            # TODO: Send verification email to user
+            return render(request, 'rsvp_confirm.html', {'email':rsvp.email})
+    else:
+        form = RsvpForm()
+    return render(request, 'events.html', {'events':events, 'form':form})
 
-    return redirect('events')
 
 def news(request):
     return render(request, 'news.html')

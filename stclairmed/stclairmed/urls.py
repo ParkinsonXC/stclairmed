@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^directory/$', views.directory, name='directory'),
     url(r'^officers/$', views.officers, name='officers'),
-    url(r'^events/(?P<pk>\d+)/$', views.event_rsvp, name="rsvp_confirm"),
     url(r'^events/$', views.events, name='events'),
     url(r'^news/$', views.news, name='news'),
     url(r'^hospitals/$', views.hospitals, name='hospitals'),

@@ -44,6 +44,6 @@ $(window).scroll(function() {
       eventDivId = $(this).parent().attr("id");
       eventId = eventDivId.replace("event-", ""); // Event PK 
 
-      $(".rsvp-submit").attr("href", eventId)
+      $(".event-id").attr("value", eventId);
     });
   })
