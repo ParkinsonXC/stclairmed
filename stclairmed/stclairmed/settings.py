@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'boards',
     'newsletters',
     'events',
+    'officers',
 ]
 
 MIDDLEWARE = [
