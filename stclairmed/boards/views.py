@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice, Doctor
-=======
-from .forms import PracticeSearchForm, ContactForm
-from events.models import Event, RSVP
-from events.forms import RsvpForm, EventForm
->>>>>>> 1097b7d704054c291bd62b8f628cb58a1a3a8cf4
+from .forms import SearchForm, ContactForm
 
 # The import below has been added for newsletter functionality
 from newsletters.models import Newsletter
