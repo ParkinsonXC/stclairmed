@@ -1,7 +1,36 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <h1>Events page!</h1>
+<div class="jumbotron text-center">
+    <h1>Events</h1>
+</div>
+{% for event in events %}
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" id="event-{{event.pk}}">
+            <h2>{{event.title}}</h2>
+            <h4>{{event.location}}</h4>
+            <h4>
+                {{event.date_of}} at {{event.time_of}}
+                <small class='text-muted d-block'>Attendees: {{event.attendees}}</small>
+            </h4>
+            <pre><p>{{event.description}}</p></pre>
+            <button class='btn btn-primary btn-rsvp'>RSVP</button> <!--Implement RSVP overlay form-->
+        </div>
+    </div>
+</div>
+<hr />
+{% endfor %}
+<div id='overlay'>
+    <div class="container">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% include 'includes/rsvp_form.html' %}
+        <input type="hidden" class="event-id" name="event-id"/>
+        <a href="#" class="btn rsvp-cancel">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
 </div>
 {% endblock body %}
