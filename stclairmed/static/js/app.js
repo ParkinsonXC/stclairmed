@@ -33,4 +33,21 @@ $(window).scroll(function() {
         });
       } // End if
     });
+
+
+    $(".btn-rsvp").on("click", function(event) {
+      // Use overlay functionality to dynamically produce an RSVP form per event
+      e1 = document.getElementById("overlay");
+      //Toggle visibility of overlay div
+      e1.style.visibility = (e1.style.visibility == "visible") ? "hidden": "visible";
+
+      eventDivId = $(this).parent().attr("id");
+      eventId = eventDivId.replace("event-", ""); // Event PK 
+
+      $(".event-id").attr("value", eventId);
+    });
+
+    $(".rsvp-cancel").on("click", function(event) {
+      $("#overlay").css("visibility", "hidden");
+    });
   })
