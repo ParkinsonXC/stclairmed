@@ -1,44 +1,32 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="row">
-  <div class="col-6">
-    <div class="jumbotron">
-      <div class="container-fluid">
-        <div class="page-header">
-        <h1>Directory / Search</h1>
-        </div>
-      <hr/>
-      <p>The St. Clair County Medical Society has a variety of members,
-        and grows larger all the time. Use the search function on this page 
-        to sort through them all. Whether you know only the name, or address,
-        you can search for them here.
-      </p>
-      </div>
-    </div>
-  </div><!--col div-->
-  <div class="col-6">
-    <div class="container">
-      <img src="https://cdn.discordapp.com/attachments/360202360087379968/444954280454127628/wristband_logo.png" />
-      <figcaption>TODO center this image</figcaption>
-    </div>
-  </div>
 
-</div><!--row div-->
-<hr/>
-<div class="row">
-  <div class="col-6">
-    <div class="container">
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-6">
+    <h1>Directory | Search</h1>
+    <hr/>
+    <h4>
+      The St. Clair County Medical Society has a variety of members
+      and grows larger all the time. Use the search function on this page 
+      to sort through them all. Whether you know only the name, or address,
+      you can search for them here.
+    </h4>
+    </div><!--col-->
+
+    <div class="col-sm-6 form-group">
       <form method="post" novalidate>
         {% csrf_token %}
-        {% include 'includes/form.html' %}
-        <button type="submit" class="btn btn-primary">Search</button>
+        {% include 'includes/radio_form.html' %}
       </form>
-    </div>
-  </div><!--col div-->
+    </div><!--col-->
 
-</div> <!--row div-->
-<br/>
+
+  </div><!--row-->
+</div><!--jumbotron-->
+
+  
 
 <div class="row">
   <div class="col-12">

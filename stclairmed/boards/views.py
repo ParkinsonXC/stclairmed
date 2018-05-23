@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Specialty, Practice, Doctor
-from .forms import PracticeSearchForm, ContactForm
+from .forms import SearchForm, ContactForm
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
 
@@ -20,9 +20,9 @@ def directory(request):
     #TODO: Handle post requests
     
     specialties = Specialty.objects.all()
-    practice_form = PracticeSearchForm()
+    form = SearchForm()
     
-    return render(request, 'directory.html', {'specialties':specialties, 'form': practice_form})
+    return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
 def contact(request):
     #TODO: Handle post requests
