@@ -5,9 +5,7 @@ from .forms import SearchForm, ContactForm
 # The import below has been added for newsletter functionality
 from newsletters.models import Newsletter
 from events.models import Event
-from events.forms import RsvpForm
-
-
+from events.forms import RsvpForm, RSVP
 
 
 # Create your views here.
