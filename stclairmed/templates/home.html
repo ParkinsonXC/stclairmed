@@ -106,28 +106,14 @@
       <p><i class="fas fa-envelope"></i> stclairmed96@gmail.com</p>
     </div><!--col-->
 
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name"
-          type="text" required>
-        </div><!--col-->
-
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email"
-          type="email" required>
-        </div><!--col-->
-      </div><!--row-->
-
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
-      rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
-        </div><!--col-->
-      </div><!--row-->
-    </div><!--col-->
-  </div><!--row-->
-</div><!--container-->
-
-{% endblock body %}
+    <div class="col-sm-7"><!--add form for under here-->
+      <form method="post" novalidate>
+      {% csrf_token %}
+      {% include 'includes/contact_form.html' %}
+      </form>
+      </div><!--col-->
+  
+    </div><!--row-->
+  </div><!--container-->
+  
+  {% endblock body %}
