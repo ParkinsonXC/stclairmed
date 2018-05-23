@@ -2,7 +2,7 @@
 
 <form>
   <div class="form-group">
-    {% render_field form.term class="form-control" %}
+    {% render_field form.term class="form-control" placeholder="Keywords" %}
   </div>
       {% for choice in form.my_choice_field.field.choices %}
       <div class="form-check form-check-inline">
