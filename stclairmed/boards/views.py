@@ -20,7 +20,7 @@ def home(request):
 def directory(request):
     #TODO: Handle post requests
     
-    specialties = Specialty.objects.all()
+    specialties = Specialty.objects.order_by('name')
     form = SearchForm()
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
