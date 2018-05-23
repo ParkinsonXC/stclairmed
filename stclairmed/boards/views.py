@@ -18,9 +18,9 @@ def directory(request):
     #TODO: Handle post requests
     
     specialties = Specialty.objects.all()
-    search_form = SearchForm()
+    form = ContactForm()
 
-    return render(request, 'directory.html', {'specialties':specialties, 'form':search_form})
+    return render(request, 'directory.html', {'specialties':specialties, 'form':form})
 
 def contact(request):
     #TODO: Handle post requests
