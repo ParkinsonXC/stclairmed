@@ -6,6 +6,7 @@ from events.forms import RsvpForm, EventForm
 
 # The import below has been added for newsletter functionality
 from newsletters.models import Newsletter
+from officers.models import Officer, Role
 
 
 
@@ -31,7 +32,11 @@ def contact(request):
     return render(request, 'contact.html', {'form':contact_form})
 
 def officers(request):
-    return render(request, 'officers.html')
+
+    officers = Officer.objects.all()
+    roles = Role.objects.all()
+
+    return render(request, 'officers.html', {'officers':officers, 'roles':roles})
 
 def events(request):
     events = reversed(Event.objects.all()) # Show newest event first
