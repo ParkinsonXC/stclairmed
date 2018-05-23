@@ -52,7 +52,7 @@
                 <br>
                 <h3>{{ newsletter.month }} {{ newsletter.year }}</h3>
                 <a href="{{ newsletter.pdf_file.url }}">
-                    <img width="480" height="620" src="{{ newsletter.pdf_img.url }}"/>
+                    <img class="img-fluid" src="{{ newsletter.pdf_img.url }}"/>
                 </a>
                 <hr>
             {% endfor %}
