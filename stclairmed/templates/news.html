@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
+<div class="container-fluid text-center" style="background-color:rgb(228, 228, 228)">
     <h1>News/Announcements page!</h1>
+</div>
+<div class="container" style="background-color:lightgrey">
+    <br>
+    {% for announcement in announcements %}
+        <div class="container-fluid" style="background-color:rgb(186, 236, 205)">
+            <h3>{{ announcement.title }}</h3>
+            <br>
+            <p class="text-center">{{ announcement.body }}</p>
+            <br>
+            <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
+        </div>
+        <br>
+    {% endfor %}
 </div>
 
 {% endblock body %}
