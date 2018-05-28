@@ -5,7 +5,7 @@ from events.forms import EventForm
 class EventAdmin(admin.ModelAdmin):
     form = EventForm
     fieldsets =[
-        (None, {'fields': ['title', 'description', 'location']}),
+        (None, {'fields': ['title', 'description', 'location', 'attendees']}),
         ('Date Information', {'fields': ['date_of', 'time_of']})
     ]
 

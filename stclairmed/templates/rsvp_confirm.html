@@ -2,8 +2,8 @@
 
 {% block body %}
 <div class="container-fluid">
-    <p>Thanks for your attendance!</p>
-    <p>An email has been sent to {{email}}, please confirm your RSVP!</p>
+    <p>We have received your RSVP to {{event.title}}!</p>
+    <p>Please confirm the event details sent to {{rsvp.email}}</p>
     <p><a href="{% url 'events' %}">&#171; Back to Events</a></p>
 </div>
 {% endblock body %}

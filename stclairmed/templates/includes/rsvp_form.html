@@ -1,6 +1,23 @@
 {% load widget_tweaks %}
-<!-- TODO: Add validation -->
+
 {% for field in form %}
-    {{field.label_tag}}
-    {{field}}
+    {% if form.is_bound %}
+        {% if field.errors %}
+            <script>
+                $(document).ready(function(){
+                    $("#overlay").css("visibility", "visible");
+                    $(".event-id").attr("value", eventId);                 
+                });
+            </script>
+            {% render_field field class="form-control is-invalid" %}
+            {% for error in field.errors %}
+                <small class="invalid-feedback">{{error}}</small>
+            {% endfor %}
+        {% else %}
+            {% render_field field class="form-control is-valid" %}
+        {% endif %}
+    {%else %}
+        {% render_field field class="form-control" %}       
+    {% endif %}
+    <hr>
 {% endfor %}

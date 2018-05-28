@@ -1,3 +1,5 @@
+var eventId = "";
+
 $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -48,6 +50,8 @@ $(window).scroll(function() {
     });
 
     $(".rsvp-cancel").on("click", function(event) {
-      $("#overlay").css("visibility", "hidden");
+      e1 = document.getElementById("overlay");
+      //Toggle visibility of overlay div
+      e1.style.visibility = (e1.style.visibility == "visible") ? "hidden": "visible";
     });
   })
