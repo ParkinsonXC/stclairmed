@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+        <h1>Search Results</h1>
+        <hr/>
+        </div>
+    </div>
+</div>
+
+{% for result in results %}
+<p>{{result.name}}</p>
+{% endfor %}
+
+
+{% endblock %}

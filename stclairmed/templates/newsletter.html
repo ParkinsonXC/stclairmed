@@ -3,52 +3,28 @@
 {% block body %}
 <div class="jumbotron">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
             <h1>Newsletters</h1>
             <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <h4>
-                    Articles from our members and readers are welcome and will be published 
-                    as space permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
-                    be subject to editing and abridgment. Articles should be submitted typewritten 
-                    and before the tenth of each month, prior to the publication month.
+            Articles from our members and readers are welcome and will be published 
+            as space permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
+            be subject to editing and abridgment. Articles should be submitted typewritten 
+            and before the tenth of each month, prior to the publication month.
             </h4>
         </div>
-
     </div>
 </div>
 
-<div class="container-fluid">
-        <div class="row">
-          
-          <div class="col-sm-8">
-            <h2>Want to contribute?</h2>
-            <h4>
-                If you are interested in joining or contributing an article to the society, please 
-                notify us from the contact form on the <a href="{% url 'home' %}">home</a> page. If you are a member and would 
-                like updates, please contact the society office with your e-mail address.
-            </h4>
-            <p>
-                Advertising space is available in the bulletin for the Medical Society of 
-                St. Clair and Madison Counties, a monthly mailer to physician members. Please 
-                <a href="#">contact</a> the society for additional information.
-            </p>
-          </div><!--col-->
-
-          <div class="col-sm-4">
-                <div style="font-size:3em; color:lightslategray; text-align:center;">  
-                  <i class="fas fa-pencil-alt fa-3x slideanim"></i>  
-                </div>
-            </div><!--col-->
-      
-          </div><!--row-->
-      </div><!--container-->
-
-
-<div class="container bg-grey">
+<div class="container">
     <div class="row">
         <div class="col-sm-4"></div>
-        <div class="col-sm-4 text-center slideanim">
-            <h1>NEWSLETTERS</h1>
+        <div class="col-sm-4 text-center">
+            <h1 class="text-center">NEWSLETTERS</h1>
             {% for newsletter in newsletters %}
                 <br>
                 <h3>{{ newsletter.month }} {{ newsletter.year }}</h3>
@@ -61,4 +37,29 @@
     </div>
 </div>
 
+<div class="container-fluid bg-grey">
+        <div class="row">
+          
+          <div class="col-sm-8">
+            <h2>Want to contribute?</h2>
+            <h4>
+                If you are interested in joining or contributing an article to the society, please 
+                notify us from the contact form on the <a href="{% url 'home' %}#contact">home</a> page. If you are a member and would 
+                like updates, please contact the society office with your e-mail address.
+            </h4>
+            <p>
+                Advertising space is available in the bulletin for the Medical Society of 
+                St. Clair and Madison Counties, a monthly mailer to physician members. Please 
+                <a href="{% url 'home' %}#contact">contact</a> the society for additional information.
+            </p>
+          </div><!--col-->
+
+          <div class="col-sm-4">
+                <div style="font-size:3em; color:lightslategray; text-align:center;">  
+                  <i class="fas fa-pencil-alt fa-3x slideanim"></i>  
+                </div>
+            </div><!--col-->
+      
+          </div><!--row-->
+      </div><!--container-->
 {% endblock body %}

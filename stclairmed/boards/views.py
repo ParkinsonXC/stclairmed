@@ -22,6 +22,20 @@ def directory(request):
     
     specialties = Specialty.objects.order_by('name')
     form = SearchForm()
+    # if request.method == 'POST':
+    #     form = SearchForm(request.POST)
+    #     if form.is_valid():
+    #         search_field = request.POST.get("my_choice_field")
+    #         if search_field == 'practices':
+    #             pass #TODO
+    #         elif search_field =='specialty':
+    #             pass #TODO
+    #         elif search_field == 'doctors':
+    #             pass #TODO
+    #         else:
+    #             #search_field == 'all' #TODO
+        
+
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
