@@ -5,6 +5,27 @@
         <h1>News / Announcements page!</h1>
     </div>
 
+    {% if announcements.has_other_pages %}
+        <ul class="pagination justify-content-center">
+            {% if announcements.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.previous_page_number }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            {% for i in announcements.paginator.page_range %}
+                {% if announcements.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if announcements.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.next_page_number }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
 
 
 
@@ -42,5 +63,28 @@
             <hr>
         {% endfor %}
     </div>
+
+    {% if announcements.has_other_pages %}
+        <ul class="pagination justify-content-center">
+            {% if announcements.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.previous_page_number }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            {% for i in announcements.paginator.page_range %}
+                {% if announcements.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if announcements.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.next_page_number }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    
 
 {% endblock body %}
