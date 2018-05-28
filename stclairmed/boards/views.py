@@ -41,10 +41,12 @@ def officers(request):
 def events(request):
     events = reversed(Event.objects.all()) # Show newest event first
     if request.method == 'POST':
-        pk = request.POST['event-id']
-        event = get_object_or_404(Event, pk=pk)
         form = RsvpForm(request.POST)
         if form.is_valid():
+            pk = request.POST['event-id']
+            event = get_object_or_404(Event, pk=pk)
+            event.attendees = event.attendees + form.cleaned_data.get('guests') + 1
+            event.save()
             rsvp = RSVP.objects.create(
                 first_name=form.cleaned_data.get('first_name'),
                 last_name=form.cleaned_data.get('last_name'),
@@ -54,7 +56,7 @@ def events(request):
             )
             # TODO: Send verification email to user
             # TODO: Increment event 'attendees' field for each rsvp + guests
-            return render(request, 'rsvp_confirm.html', {'email':rsvp.email})
+            return render(request, 'rsvp_confirm.html', {'rsvp':rsvp, 'event':event})
     else:
         form = RsvpForm()
     return render(request, 'events.html', {'events':events, 'form':form})

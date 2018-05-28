@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator
 
 class Location(models.Model):
     name = models.CharField(max_length=50, blank=True)
@@ -17,7 +18,10 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=2000)
     location = models.ForeignKey(Location, related_name='events', on_delete='CASCADE')
-    attendees = models.IntegerField(default=0)
+    attendees = models.PositiveIntegerField(
+        default=0, 
+        validators=[MaxValueValidator(20)]
+        )
     date_of = models.DateField()
     time_of = models.TimeField()
     date_posted = models.DateField(auto_now_add=True)
