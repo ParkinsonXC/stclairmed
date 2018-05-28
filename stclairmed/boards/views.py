@@ -23,14 +23,17 @@ def directory(request):
     specialties = Specialty.objects.order_by('name')
     form = SearchForm()
     # if request.method == 'POST':
-    #     search_field = request.POST.get("my_choice_field")
     #     form = SearchForm(request.POST)
-    #     if form.is_valid() and search_field == 'practices':
-    #         search_term = request.POST.get('term')
-    #         results = Practice.objects.filter(name__contains=search_term)
-    #         return render(request, 'directory_results.html', {'results':results})
-    #     else: 
-    #         form = SearchForm()
+    #     if form.is_valid():
+    #         search_field = request.POST.get("my_choice_field")
+    #         if search_field == 'practices':
+    #             pass #TODO
+    #         elif search_field =='specialty':
+    #             pass #TODO
+    #         elif search_field == 'doctors':
+    #             pass #TODO
+    #         else:
+    #             #search_field == 'all' #TODO
         
 
     
