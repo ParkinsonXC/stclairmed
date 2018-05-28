@@ -5,6 +5,8 @@
         <h1>News / Announcements page!</h1>
     </div>
 
+    <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
+
     {% if announcements.has_other_pages %}
         <ul class="pagination justify-content-center">
             {% if announcements.has_previous %}
@@ -64,6 +66,9 @@
         {% endfor %}
     </div>
 
+
+     <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
+     
     {% if announcements.has_other_pages %}
         <ul class="pagination justify-content-center">
             {% if announcements.has_previous %}

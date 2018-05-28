@@ -59,6 +59,11 @@ def events(request):
         form = RsvpForm()
     return render(request, 'events.html', {'events':events, 'form':form})
 
+
+
+
+
+
 def news(request):
     announcements_list = Announcement.objects.all().order_by('-date', '-time')
     page = request.GET.get('page', 1)
@@ -72,6 +77,11 @@ def news(request):
         announcements = paginator.page(paginator.num_pages)
 
     return render(request, 'news.html', {'announcements' : announcements})
+
+
+
+
+
 
 def hospitals(request):
     return render(request, 'hospitals.html')
