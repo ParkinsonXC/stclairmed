@@ -3,10 +3,9 @@ from .models import Specialty, Practice, Doctor
 from .forms import SearchForm, ContactForm
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
-
-# The import below has been added for newsletter functionality
 from newsletters.models import Newsletter
 from officers.models import Officer, Role
+from news.models import Announcement
 
 
 
@@ -60,7 +59,9 @@ def events(request):
     return render(request, 'events.html', {'events':events, 'form':form})
 
 def news(request):
-    return render(request, 'news.html')
+    announcements = reversed(Announcement.objects.all())
+
+    return render(request, 'news.html', {'announcements' : announcements})
 
 def hospitals(request):
     return render(request, 'hospitals.html')
