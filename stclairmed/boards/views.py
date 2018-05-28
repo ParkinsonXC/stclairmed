@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Specialty, Practice, Doctor
 from .forms import SearchForm, ContactForm
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
-
-# The import below has been added for newsletter functionality
 from newsletters.models import Newsletter
 from officers.models import Officer, Role
+from news.models import Announcement
 
 
 
@@ -59,8 +59,29 @@ def events(request):
         form = RsvpForm()
     return render(request, 'events.html', {'events':events, 'form':form})
 
+
+
+
+
+
 def news(request):
-    return render(request, 'news.html')
+    announcements_list = Announcement.objects.all().order_by('-date', '-time')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(announcements_list, 3)
+    try:
+        announcements = paginator.page(page)
+    except PageNotAnInteger:
+        announcements = paginator.page(1)
+    except EmptyPage:
+        announcements = paginator.page(paginator.num_pages)
+
+    return render(request, 'news.html', {'announcements' : announcements})
+
+
+
+
+
 
 def hospitals(request):
     return render(request, 'hospitals.html')
