@@ -1,6 +1,5 @@
 {% load widget_tweaks %}
 
-<form>
   <div class="form-group">
     {% render_field form.term class="form-control" placeholder="Keywords" %}
   </div>
@@ -14,5 +13,6 @@
         </label>
       </div>
       {% endfor %}
-    <button type"submit" class="btn btn-primary">Search</button>
-</form>
+      <button type"submit" class="btn btn-primary">Search</button><br/>
+      <small>Select a field to search in or select "All" to search all fields</small>
+

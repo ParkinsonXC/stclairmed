@@ -1,8 +1,95 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <h1>News/Announcements page!</h1>
-</div>
+<div class="jumbotron text-center" style="background-color:rgb(228, 228, 228)">
+        <h1>News / Announcements page!</h1>
+    </div>
+
+    <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
+
+    {% if announcements.has_other_pages %}
+        <ul class="pagination justify-content-center">
+            {% if announcements.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.previous_page_number }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            {% for i in announcements.paginator.page_range %}
+                {% if announcements.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if announcements.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.next_page_number }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+
+
+
+    <div class="container">
+        <br>
+        {% for announcement in announcements %}
+            {% if announcement.img %}
+            <div class="container">
+                <div class="row align-items-center" style="background-color:rgb(186, 236, 205)">
+                    <div class="col-sm-8">
+                        <br>
+                        <h3>{{ announcement.title }}</h3>
+                        <br>
+                        <p class="text-center">{{ announcement.body }}</p>
+                        <br>
+                        <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
+                        <br>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-thumbnail" src='{{ announcement.img.url }}'/>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="container" style="background-color:rgb(186, 236, 205)">
+                <br>
+                <h3>{{ announcement.title }}</h3>
+                <br>
+                <p class="text-center">{{ announcement.body }}</p>
+                <br>
+                <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
+                <br>
+            </div>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    </div>
+
+
+     <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
+     
+    {% if announcements.has_other_pages %}
+        <ul class="pagination justify-content-center">
+            {% if announcements.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.previous_page_number }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            {% for i in announcements.paginator.page_range %}
+                {% if announcements.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if announcements.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ announcements.next_page_number }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    
 
 {% endblock body %}
