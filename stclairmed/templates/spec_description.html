@@ -2,9 +2,16 @@
 
 {% block body %}
 <div class="jumbotron">
-    <h1>All {{ specialty.name }} Practices</h1>
-</div> 
-<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>All {{specialty.name}} Practices</h1>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+
+<div class="container bg-grey">
 <table class="table">
     <thead class="thead-inverse">
         <tr>
