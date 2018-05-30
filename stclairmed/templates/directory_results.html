@@ -3,15 +3,33 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-sm-6">
-        <h1>Search Results</h1>
+        <h1>{{qs|length}} Search Result(s)</h1>
         <hr/>
         </div>
     </div>
 </div>
 
-{% for result in results %}
-<p>{{result.name}}</p>
-{% endfor %}
-
+<div class="container bg-grey">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in qs %}
+                <tr>
+                    <td>{{q.name}}</td>
+                    <td>{{q.phone_number}}</td>
+                    <td>{{q.city}}</td>
+                    <td>{{q.state}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
 
 {% endblock %}

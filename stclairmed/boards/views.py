@@ -7,6 +7,7 @@ from events.forms import RsvpForm, EventForm
 from newsletters.models import Newsletter
 from officers.models import Officer, Role
 from news.models import Announcement
+from django.db.models import Q
 
 
 
@@ -20,22 +21,34 @@ def home(request):
 def directory(request):
     #TODO: Handle post requests
     
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            search_field = request.POST.get('my_choice_field')
+            query = request.POST.get('term')
+            if search_field == 'practices':
+                or_lookup = (Q(name__icontains=query) |
+                             Q(address__icontains=query) |
+                             Q(city__icontains=query) |
+                             Q(state__icontains=query) |
+                             Q(zip_code__icontains=query) |
+                             Q(phone_number__icontains=query)|
+                             Q(website__icontains=query)
+                             )
+                qs = Practice.objects.filter(or_lookup).distinct()
+                return render(request, 'directory_results.html', {'qs':qs})
+
+            elif search_field =='specialty':
+                pass #TODO
+
+            elif search_field == 'doctors':
+                pass #TODO
+
+            else:
+                pass #TODO
+        
     specialties = Specialty.objects.order_by('name')
     form = SearchForm()
-    # if request.method == 'POST':
-    #     form = SearchForm(request.POST)
-    #     if form.is_valid():
-    #         search_field = request.POST.get("my_choice_field")
-    #         if search_field == 'practices':
-    #             pass #TODO
-    #         elif search_field =='specialty':
-    #             pass #TODO
-    #         elif search_field == 'doctors':
-    #             pass #TODO
-    #         else:
-    #             #search_field == 'all' #TODO
-        
-
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
