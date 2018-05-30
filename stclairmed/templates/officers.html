@@ -6,21 +6,35 @@
         <div class="col-sm-6">
             <h1>St. Clair Medical Society Officers</h1>
             <hr/>
+            
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="jumbotron">
-            <div class="container-fluid">
 
-                {% for role in roles %}
+
+
+<div class="d-flex flex-row align-items-center flex-wrap">
+    <div class="mx-auto">
+        <img src="http://www.stclairmed.com/picts/past-presidents-1.jpg" class="img-responsive rounded" style="max-height: 775px;"/>
+    </div>
+
+    <div class="mx-auto">
+        <img src="http://www.stclairmed.com/presidents-dinner-2017/Presidents%202017-officers.jpg" class="img-responsive rounded" style="max-height: 500px;"/>
+    </div>
+</div><!--row-->
+
+<div class="d-flex flex-row flex-wrap justify-content-around" style="padding-top:50px; padding-bottom:50px;">
+        
+            {% for role in roles %}
+            </br>
+            <div class="col-sm-2">
                 <h5>{{ role.name }}</h5>
+                <hr>
                 <ol>
                     {% for officer in officers %}
                         {% if officer.role.name == role.name %}
-                        <li style="list-style-type:none;">
+                        <li style="list-style-type:none; font-size:18px;">
                             {% if officer.position %}
                                 {{ officer }} - {{ officer.position }}
                             {% else %}
@@ -30,22 +44,9 @@
                         {% endif %}
                     {% endfor %}
                 </ol>
-                {% endfor %}
             </div>
+            <br>
+            {% endfor %}
             
-            
-        
-        </div><!--jumbotron div-->
-    </div> <!--col div-->
-
-    <div class="col-md-6">
-        <div class="container-fluid">
-            <img src="http://www.stclairmed.com/presidents-dinner-2017/Presidents%202017-officers.jpg" class="img-fluid rounded" style="max-height: 500px;"/>
-            <hr/>
-            <img src="http://www.stclairmed.com/picts/past-presidents-1.jpg" class="img-fluid rounded" style="max-height: 775px;"/>   
         </div>
-    </div> <!--col-->
-
-</div><!--row-->
-
 {% endblock body %}
