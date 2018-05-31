@@ -10,9 +10,9 @@ from newsletters.models import Newsletter
 from officers.models import Officer, Role
 from news.models import Announcement
 
+from events.event_rsvp_confirm_template import email_confirmation_html
+
 import datetime
-
-
 
 
 # Create your views here.
@@ -78,16 +78,23 @@ def event_rsvp(request, pk):
                 email=form.cleaned_data.get('email'),
                 event=event
             )
-            rsvp.save()
-
             send_mail(
                 'Event Confirmation - SCCMS',
-                'Looking forward to seeing you at {0}'.format(event),
-                'neondodongo@gmail.com',
-                [rsvp.email],
-                fail_silently=False
+                '',
+                from_email='neondodongo@gmail.com',
+                recipient_list=[rsvp.email],
+                fail_silently=False,
+                html_message=email_confirmation_html.format(
+                    event.title, 
+                    event.location.name, 
+                    event.location.address, 
+                    event.location.city, 
+                    event.location.state, 
+                    '{0} {1}'.format(rsvp.first_name, rsvp.last_name),
+                    event.description
+                )
             )
-
+            rsvp.save()
             return render(request, 'rsvp_confirm.html', {'rsvp':rsvp, 'event':event})
     else:
         form = RsvpForm()

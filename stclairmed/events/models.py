@@ -10,9 +10,10 @@ class Location(models.Model):
     phone = models.CharField(max_length=12, blank=True)
 
     def __str__(self):
+        full_address = '{0} {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip_code)
         if len(self.name) > 0:
-            return self.name + ' -- ' + self.address
-        return self.address
+            return self.name + "\n" + full_address
+        return full_address
 
 class Event(models.Model):
     title = models.CharField(max_length=100)

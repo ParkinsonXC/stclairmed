@@ -4,6 +4,13 @@ body {
 
 pre {
   font-family: 'Nunito', sans-serif;
+  overflow-wrap: break-word;
+  overflow-x:hidden;
+}
+
+.overflow-wrap {
+  word-wrap:break-word;
+  
 }
 
 .navbar {
