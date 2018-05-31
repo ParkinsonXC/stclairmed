@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="jumbotron text-center">
-    <h1>Events</h1>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>St. Clair Medical Society | Events</h1>
+            <hr>
+        </div>
+        <div class="col-sm-3">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </div>
+    </div>
 </div>
 {% for event in events %}
 <div class="container text-center">
@@ -20,7 +28,7 @@
             {% if event.date_of > current_date %}
                 <a href="{% url 'event_rsvp' event.pk %}" class='btn btn-primary btn-rsvp'>RSVP</a>
             {% else %}
-                <button type="button" class='btn btn-primary btn-rsvp' disabled>RSVP</button>
+                <button type="button" class='btn btn-rsvp' disabled>RSVP</button>
             {% endif %}
         </div>
     </div>
