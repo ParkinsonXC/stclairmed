@@ -32,9 +32,9 @@ class Event(models.Model):
 class RSVP(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=40)
-    guests = models.IntegerField()
-    email = models.EmailField(blank=True, default='', unique=True)
-    event = models.ForeignKey(Event, related_name='RSVPs', on_delete='PROTECT')
+    guests = models.IntegerField(default=0, null=False)
+    email = models.EmailField(blank=True, default='', unique=False, null=False)
+    event = models.ForeignKey(Event, related_name='RSVPs', on_delete='CASCADE', null=False)
 
     def __str__(self):
         return '{0}, {1}'.format(self.last_name, self.first_name)

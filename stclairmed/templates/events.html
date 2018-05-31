@@ -15,24 +15,16 @@
                 {{event.date_of}} at {{event.time_of}}
                 <small class='text-muted d-block'>Attending: {{event.attendees}}</small>
             </h6>
+            <br>
             <pre><p>{{event.description}}</p></pre>
-            <button class='btn btn-primary btn-rsvp'>RSVP</button>
+            {% if event.date_of > current_date %}
+                <a href="{% url 'event_rsvp' event.pk %}" class='btn btn-primary btn-rsvp'>RSVP</a>
+            {% else %}
+                <button type="button" class='btn btn-primary btn-rsvp' disabled>RSVP</button>
+            {% endif %}
         </div>
     </div>
+    <hr />
 </div>
-<hr />
 {% endfor %}
-<div id='overlay'>
-    <div class="container-fluid">
-    <form method="post" novalidate id="rsvp-form">
-        <h4>Please fill out the fields below:</h4>
-        {% csrf_token %}
-        {% include 'includes/rsvp_form.html' %}
-        <input type="hidden" class="event-id" name="event-id"/>
-        <br>
-        <button type="button" class="btn rsvp-cancel">Cancel</button> |
-        <button type="submit" class="btn btn-primary" id="rsvp-submit">Submit</button>
-    </form>
-    </div>
-</div>
 {% endblock body %}
