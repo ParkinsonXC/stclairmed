@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="jumbotron text-center" style="background-color:rgb(228, 228, 228)">
-        <h1>News / Announcements page!</h1>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <h1>St. Clair Medical Society | News</h1>
+            <hr>
+        </div>
     </div>
+</div>
 
     <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
 
@@ -28,44 +34,72 @@
             {% endif %}
         </ul>
     {% endif %}
+<br>
 
 
 
-    <div class="container">
-        <br>
-        {% for announcement in announcements %}
-            {% if announcement.img %}
-            <div class="container">
-                <div class="row align-items-center" style="background-color:rgb(186, 236, 205)">
+
+
+
+{% for announcement in announcements %}
+    {% if announcement.img %}
+        {% if announcement.pk|divisibleby:'2' %}
+            <div class="container-fluid news-div bg-grey">
+        {% else %}
+            <div class="container-fluid news-div">
+        {% endif %}
+                <div class="row align-items-left">
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-8">
-                        <br>
                         <h3>{{ announcement.title }}</h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5">
+                        <br>
+                        <p class="text-center">{{ announcement.body }}</p>
+                        <br>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="img-thumbnail" src='{{ announcement.img.url }}'/>
+                    </div>
+                </div>
+                <div class="row align-items-right">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-2">
+                        <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
+                    </div>
+                </div>
+            </div>
+    {% else %}
+        {% if announcement.pk|divisibleby:'2' %}
+            <div class="container-fluid news-div bg-grey">
+        {% else %}
+            <div class="container-fluid news-div">
+        {% endif %}
+                <div class="row align-items-left">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <h3>{{ announcement.title }}</h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
                         <br>
                         <p class="text-center">{{ announcement.body }}</p>
                         <br>
                         <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
-                        <br>
-                    </div>
-                    <div class="col-sm-4">
-                        <img class="img-thumbnail" src='{{ announcement.img.url }}'/>
                     </div>
                 </div>
             </div>
-            {% else %}
-            <div class="container" style="background-color:rgb(186, 236, 205)">
-                <br>
-                <h3>{{ announcement.title }}</h3>
-                <br>
-                <p class="text-center">{{ announcement.body }}</p>
-                <br>
-                <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
-                <br>
-            </div>
-            {% endif %}
-            <hr>
-        {% endfor %}
-    </div>
-
+        {% endif %}
+{% endfor %}
+<br>
+<br>
 
      <!-- PAGINATION DOES NOT CURRENTLY LIMIT THE NUMBER OF PAGES ON THE LIST -->
      
