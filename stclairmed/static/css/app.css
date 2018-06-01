@@ -8,6 +8,7 @@ pre {
   overflow-x:hidden;
 }
 
+
 .overflow-wrap {
   word-wrap:break-word;
   
@@ -22,7 +23,9 @@ pre {
   line-height:1.42857143 !important;
   letter-spacing: 4px;
   border-radius: 0;
+  padding: 5px;
 }
+
 
 .navbar li a, .navbar .navbar-brand {
   color: darkblue !important;
@@ -42,9 +45,10 @@ pre {
   color: #fff !important;
 }
 
+
 .jumbotron {
   padding: 100px 25px;
-  background-color:rgb(182, 237, 188);
+  background: linear-gradient(rgba(182, 237, 188, 1) 70%, white);
   
 }
 
@@ -77,7 +81,7 @@ h2 {
   font-size: 24px;
   text-transform: uppercase;
   color: #303030;
-  font-weight: 600;
+  font-weight: 450;
   margin-bottom: 30px;
 }
 
