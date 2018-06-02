@@ -38,6 +38,10 @@ def directory(request):
                              Q(phone_number__icontains=query)|
                              Q(website__icontains=query)
                              )
+                #The error is here. To get the POST request to load,
+                #in the return statement, change table_qs to qs 
+                #that will load the table in the standard, full field example
+                
                 qs = Practice.objects.filter(or_lookup).distinct()
                 table_qs = PracticeTable(qs)
                 return render(request, 'directory_results.html', {'qs':table_qs})
