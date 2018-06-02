@@ -8,7 +8,7 @@ from newsletters.models import Newsletter
 from officers.models import Officer, Role
 from news.models import Announcement
 from django.db.models import Q
-
+from .tables import PracticeTable
 
 
 
@@ -24,8 +24,11 @@ def directory(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
-            search_field = request.POST.get('my_choice_field')
-            query = request.POST.get('term')
+            search_field = form.cleaned_data.get('my_choice_field')
+            # search_field = request.POST.get('my_choice_field')
+            # query = request.POST.get('term')
+
+            query = form.cleaned_data.get('term')
             if search_field == 'practices':
                 or_lookup = (Q(name__icontains=query) |
                              Q(address__icontains=query) |
@@ -36,17 +39,30 @@ def directory(request):
                              Q(website__icontains=query)
                              )
                 qs = Practice.objects.filter(or_lookup).distinct()
-                return render(request, 'directory_results.html', {'qs':qs})
+                table_qs = PracticeTable(qs)
+                return render(request, 'directory_results.html', {'qs':table_qs})
 
             elif search_field =='specialty':
-                pass #TODO
+                or_lookup = (Q(name__icontains=query) |
+                             Q(description__icontains=query)
+                             )
+                qs = Specialty.objects.filter(or_lookup).distinct()
+                return render(request, 'directory_results.html', {'qs':qs})
+                
 
             elif search_field == 'doctors':
-                pass #TODO
+                or_lookup = (Q(first_name__icontains=query) |
+                             Q(last_name__icontains=query) |
+                             Q(title__icontains=query)
+                             )
+                qs = Doctor.objects.filter(or_lookup).distinct()
+                return render(request, 'directory_results.html', {'qs':qs})
 
             else:
-                pass #TODO
-        
+                 pass
+                
+                
+    #if request.method == 'GET':
     specialties = Specialty.objects.order_by('name')
     form = SearchForm()
     
