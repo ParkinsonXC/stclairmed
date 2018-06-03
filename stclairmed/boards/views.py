@@ -8,7 +8,7 @@ from newsletters.models import Newsletter
 from officers.models import Officer, Role
 from news.models import Announcement
 from django.db.models import Q
-from .tables import PracticeTable
+from .tables import PracticeTable, SpecialtyTable, DoctorTable
 
 
 
@@ -38,20 +38,18 @@ def directory(request):
                              Q(phone_number__icontains=query)|
                              Q(website__icontains=query)
                              )
-                #The error is here. To get the POST request to load,
-                #in the return statement, change table_qs to qs 
-                #that will load the table in the standard, full field example
                 
                 qs = Practice.objects.filter(or_lookup).distinct()
                 table_qs = PracticeTable(qs)
-                return render(request, 'directory_results.html', {'qs':table_qs})
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
 
             elif search_field =='specialty':
                 or_lookup = (Q(name__icontains=query) |
                              Q(description__icontains=query)
                              )
                 qs = Specialty.objects.filter(or_lookup).distinct()
-                return render(request, 'directory_results.html', {'qs':qs})
+                table_qs = SpecialtyTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs': table_qs})
                 
 
             elif search_field == 'doctors':
@@ -60,7 +58,8 @@ def directory(request):
                              Q(title__icontains=query)
                              )
                 qs = Doctor.objects.filter(or_lookup).distinct()
-                return render(request, 'directory_results.html', {'qs':qs})
+                table_qs = DoctorTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
 
             else:
                  pass
