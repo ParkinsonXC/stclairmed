@@ -29,8 +29,9 @@ def directory(request):
             # query = request.POST.get('term')
 
             query = form.cleaned_data.get('term')
-            if search_field == 'practices':
-                or_lookup = (Q(name__icontains=query) |
+
+            #Creates the SQL needeed to search all selected practice fields
+            practice_or_lookup = (Q(name__icontains=query) |
                              Q(address__icontains=query) |
                              Q(city__icontains=query) |
                              Q(state__icontains=query) |
@@ -38,26 +39,33 @@ def directory(request):
                              Q(phone_number__icontains=query)|
                              Q(website__icontains=query)
                              )
-                
-                qs = Practice.objects.filter(or_lookup).distinct()
+
+            #Creates the SQL needed to search all selected doctor fields
+            doctor_or_lookup = (Q(first_name__icontains=query) |
+                             Q(last_name__icontains=query) |
+                             Q(title__icontains=query)
+                             )
+
+            #Creates the SQL needed to search all selected specialty fields TODO: Is this necessary?
+            specialty_or_lookup = (Q(name__icontains=query) |
+                             Q(description__icontains=query)
+                             )
+
+            if search_field == 'practices':
+
+                qs = Practice.objects.filter(practice_or_lookup).distinct()
                 table_qs = PracticeTable(qs)
                 return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
 
             elif search_field =='specialty':
-                or_lookup = (Q(name__icontains=query) |
-                             Q(description__icontains=query)
-                             )
-                qs = Specialty.objects.filter(or_lookup).distinct()
+                
+                qs = Specialty.objects.filter(specialty_or_lookup).distinct()
                 table_qs = SpecialtyTable(qs)
                 return render(request, 'directory_results.html', {'qs':qs, 'table_qs': table_qs})
                 
-
             elif search_field == 'doctors':
-                or_lookup = (Q(first_name__icontains=query) |
-                             Q(last_name__icontains=query) |
-                             Q(title__icontains=query)
-                             )
-                qs = Doctor.objects.filter(or_lookup).distinct()
+                
+                qs = Doctor.objects.filter(doctor_or_lookup).distinct()
                 table_qs = DoctorTable(qs)
                 return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
 
