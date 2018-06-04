@@ -7,7 +7,7 @@ class SearchForm(forms.Form):
         help_text = "The max length of the name is 35 letters."        
         )
 
-    choices = (('practices', 'Practices',),('specialty', 'Specialty',),('doctors', 'Doctors',),('all', 'All',))
+    choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
     my_choice_field = forms.ChoiceField(
         widget=forms.RadioSelect(), 
         choices=choices,

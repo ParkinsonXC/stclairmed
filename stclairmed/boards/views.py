@@ -51,31 +51,32 @@ def directory(request):
                              Q(title__icontains=query)
                              )
 
-            #Creates the SQL needed to search all selected specialty fields TODO: Is this necessary?
-            specialty_or_lookup = (Q(name__icontains=query) |
-                             Q(description__icontains=query)
-                             )
-
             if search_field == 'practices':
 
                 qs = Practice.objects.filter(practice_or_lookup).distinct()
-                table_qs = PracticeTable(qs)
-                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
-
-            elif search_field =='specialty':
-                
-                qs = Specialty.objects.filter(specialty_or_lookup).distinct()
-                table_qs = SpecialtyTable(qs)
-                return render(request, 'directory_results.html', {'qs':qs, 'table_qs': table_qs})
+                practice_table = PracticeTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table})
                 
             elif search_field == 'doctors':
                 
                 qs = Doctor.objects.filter(doctor_or_lookup).distinct()
-                table_qs = DoctorTable(qs)
-                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
+                doctor_table = DoctorTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'doctor_table':doctor_table})
 
             else:
-                 pass
+                practice_qs = Practice.objects.filter(practice_or_lookup).distinct()
+                doctor_qs = Doctor.objects.filter(doctor_or_lookup).distinct()
+                
+                practice_table = PracticeTable(practice_qs)
+                doctor_table = DoctorTable(doctor_qs)
+
+                qs = []
+                for i in practice_qs:
+                    qs.append(' ')
+                for i in doctor_qs:
+                    qs.append(' ')            
+            
+                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table, 'doctor_table':doctor_table})
                 
                 
     #if request.method == 'GET':

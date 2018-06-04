@@ -11,8 +11,18 @@
 </div>
 
 <div class="container bg-grey">
-    {% render_table table_qs %}
+    {% if practice_table %}
+    <h3>Practices</h3>
+    <hr/>
+    {% render_table practice_table %}
+    {% endif %}
+    {% if doctor_table %}
+    <h3>Doctors</h3>
+    <hr/>
+    {% render_table doctor_table %}
+    {% endif %}    
 </div>
+
 
 
 <!-- <div class="container bg-grey">
