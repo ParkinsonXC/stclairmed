@@ -11,42 +11,46 @@
     </div>
 </div>
 
-
-
-
-<div class="d-flex flex-row align-items-center flex-wrap">
-    <div class="mx-auto">
-        <img src="http://www.stclairmed.com/picts/past-presidents-1.jpg" class="img-responsive rounded" style="max-height: 775px;"/>
-    </div>
-
-    <div class="mx-auto">
-        <img src="http://www.stclairmed.com/presidents-dinner-2017/Presidents%202017-officers.jpg" class="img-responsive rounded" style="max-height: 500px;"/>
-    </div>
-</div><!--row-->
-
-<div class="d-flex flex-row flex-wrap justify-content-around" style="padding-top:50px; padding-bottom:50px;">
-        
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
             {% for role in roles %}
-            </br>
-            <div class="col-sm-2">
-                <h5>{{ role.name }}</h5>
-                <hr>
-                <ol>
-                    {% for officer in officers %}
-                        {% if officer.role.name == role.name %}
-                        <li style="list-style-type:none; font-size:18px;">
-                            {% if officer.position %}
-                                {{ officer }} - {{ officer.position }}
-                            {% else %}
-                                {{ officer }}
-                            {% endif %}
-                        </li>
+            <h5>{{ role.name }}</h5>
+            <ol>
+                {% for officer in officers %}
+                    {% if officer.role.name == role.name %}
+                    <li style="list-style-type:none;">
+                        {% if officer.position %}
+                            {{ officer }} - {{ officer.position }}
+                        {% else %}
+                            {{ officer }}
                         {% endif %}
-                    {% endfor %}
-                </ol>
-            </div>
-            <br>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
             {% endfor %}
-            
+        </div>                             
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <img src="http://www.stclairmed.com/presidents-dinner-2017/Presidents%202017-officers.jpg" class="img-fluid rounded" style="max-height: 500px;"/>
+            </div>
         </div>
+    </div>
+    <hr>
+    <br>
+    <div class="row slideanim">
+        <div class="col-sm-12" style="text-align:center">
+            <h2>Past Officers - 2016</h2>
+        </div>
+    </div>
+    <div class="row slideanim align-items-center">
+        <div class="col-sm-12">
+            <img style="display:block; margin:auto;" src="http://stclairmed.com/picts/past-presidents-1.jpg"/>
+        </div>
+    </div>
+</div>
+
+>>>>>>> origin/gwi-events-5
 {% endblock body %}

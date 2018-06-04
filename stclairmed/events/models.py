@@ -10,9 +10,10 @@ class Location(models.Model):
     phone = models.CharField(max_length=12, blank=True)
 
     def __str__(self):
+        full_address = '{0} {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip_code)
         if len(self.name) > 0:
-            return self.name + ' -- ' + self.address
-        return self.address
+            return self.name + "\n" + full_address
+        return full_address
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
@@ -32,9 +33,9 @@ class Event(models.Model):
 class RSVP(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=40)
-    guests = models.IntegerField()
-    email = models.EmailField(blank=True, default='', unique=True)
-    event = models.ForeignKey(Event, related_name='RSVPs', on_delete='PROTECT')
+    guests = models.IntegerField(default=0, null=False)
+    email = models.EmailField(blank=True, default='', unique=False, null=False)
+    event = models.ForeignKey(Event, related_name='RSVPs', on_delete='CASCADE', null=False)
 
     def __str__(self):
         return '{0}, {1}'.format(self.last_name, self.first_name)

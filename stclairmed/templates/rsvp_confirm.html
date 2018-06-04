@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container" style="padding-top:70px;">
     <p>We have received your RSVP to {{event.title}}!</p>
     <p>Please confirm the event details sent to {{rsvp.email}}</p>
+    <p>*** You may have to check your spam folder ***</p>
     <p><a href="{% url 'events' %}">&#171; Back to Events</a></p>
 </div>
 {% endblock body %}
