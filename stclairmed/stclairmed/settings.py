@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'events',
     'officers',
     'news',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

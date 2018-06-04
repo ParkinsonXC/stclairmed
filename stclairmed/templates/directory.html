@@ -27,8 +27,6 @@
   </div><!--row-->
 </div><!--jumbotron-->
 
-  
-
 <div class="row">
   <div class="col-12">
   <div class="container">
@@ -42,7 +40,7 @@
     <tbody>
       {% for spec in specialties %}
       <tr>
-        <td><a href="{% url 'spec_description' spec.pk %}" >{{spec.name}}</a></td>
+        <td><a href="{% url 'spec_description' spec.pk %}" id="{{spec.name}}">{{spec.name}}</a></td>
       </tr>
       {% endfor %}
     </tbody>

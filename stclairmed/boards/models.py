@@ -24,7 +24,6 @@ class Practice(models.Model):
             return self.name
         return '{0} {1}, {2} {3}'.format(self.address, self.city, self.state, self.zip_code)
 
-
 class Doctor(models.Model):
     first_name = models.CharField(max_length=30, default='')
     middle_init = models.CharField(max_length=1, default='', blank=True)

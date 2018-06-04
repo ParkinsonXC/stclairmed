@@ -1,17 +1,46 @@
 {% extends 'base.html' %}
+{% load render_table from django_tables2 %}
 {% block body %}
 <div class="jumbotron">
     <div class="row">
         <div class="col-sm-6">
-        <h1>Search Results</h1>
+        <h1>{{qs|length}} Search Result(s)</h1>
         <hr/>
         </div>
     </div>
 </div>
 
-{% for result in results %}
-<p>{{result.name}}</p>
-{% endfor %}
+<div class="container bg-grey">
+    {% render_table table_qs %}
+</div>
 
+
+<!-- <div class="container bg-grey">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Number</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in qs %}
+                <tr>
+                    {% if q.name %}
+                        <td>{{q.name}}</td>
+                    {% elif q.first_name %}
+                        <td>{{q.first_name}}</td>
+                    {% endif %}
+                    <td>{{q.phone_number}}</td>
+                    <td>{{q.city}}</td>
+                    <td>{{q.state}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div> -->
 
 {% endblock %}

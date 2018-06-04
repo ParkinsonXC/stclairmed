@@ -11,8 +11,10 @@ from officers.models import Officer, Role
 from news.models import Announcement
 
 from events.event_rsvp_confirm_template import email_confirmation_html
-
+from django.db.models import Q
+from .tables import PracticeTable, SpecialtyTable, DoctorTable
 import datetime
+
 
 
 # Create your views here.
@@ -24,22 +26,61 @@ def home(request):
 def directory(request):
     #TODO: Handle post requests
     
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            search_field = form.cleaned_data.get('my_choice_field')
+            # search_field = request.POST.get('my_choice_field')
+            # query = request.POST.get('term')
+
+            query = form.cleaned_data.get('term')
+
+            #Creates the SQL needeed to search all selected practice fields
+            practice_or_lookup = (Q(name__icontains=query) |
+                             Q(address__icontains=query) |
+                             Q(city__icontains=query) |
+                             Q(state__icontains=query) |
+                             Q(zip_code__icontains=query) |
+                             Q(phone_number__icontains=query)|
+                             Q(website__icontains=query)
+                             )
+
+            #Creates the SQL needed to search all selected doctor fields
+            doctor_or_lookup = (Q(first_name__icontains=query) |
+                             Q(last_name__icontains=query) |
+                             Q(title__icontains=query)
+                             )
+
+            #Creates the SQL needed to search all selected specialty fields TODO: Is this necessary?
+            specialty_or_lookup = (Q(name__icontains=query) |
+                             Q(description__icontains=query)
+                             )
+
+            if search_field == 'practices':
+
+                qs = Practice.objects.filter(practice_or_lookup).distinct()
+                table_qs = PracticeTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
+
+            elif search_field =='specialty':
+                
+                qs = Specialty.objects.filter(specialty_or_lookup).distinct()
+                table_qs = SpecialtyTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs': table_qs})
+                
+            elif search_field == 'doctors':
+                
+                qs = Doctor.objects.filter(doctor_or_lookup).distinct()
+                table_qs = DoctorTable(qs)
+                return render(request, 'directory_results.html', {'qs':qs, 'table_qs':table_qs})
+
+            else:
+                 pass
+                
+                
+    #if request.method == 'GET':
     specialties = Specialty.objects.order_by('name')
     form = SearchForm()
-    # if request.method == 'POST':
-    #     form = SearchForm(request.POST)
-    #     if form.is_valid():
-    #         search_field = request.POST.get("my_choice_field")
-    #         if search_field == 'practices':
-    #             pass #TODO
-    #         elif search_field =='specialty':
-    #             pass #TODO
-    #         elif search_field == 'doctors':
-    #             pass #TODO
-    #         else:
-    #             #search_field == 'all' #TODO
-        
-
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
