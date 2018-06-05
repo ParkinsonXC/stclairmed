@@ -6,11 +6,13 @@ from .models import Specialty, Practice, Doctor
 from .forms import SearchForm, ContactForm
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
-from newsletters.models import Newsletter
+from newsletters.forms import SubForm
+from newsletters.models import Newsletter, Subscriber
 from officers.models import Officer, Role
 from news.models import Announcement
 
 from events.event_rsvp_confirm_template import email_confirmation_html
+from newsletters.newsletter_sub_confirm import sub_confirmation_html
 from django.db.models import Q
 from .tables import PracticeTable, SpecialtyTable, DoctorTable
 import datetime
@@ -175,6 +177,57 @@ def spec_description(request, pk):
 
 def newsletter(request):
     
-    newsletters = reversed(Newsletter.objects.all())
+    reversed_newsletters = reversed(Newsletter.objects.all())
+    newsletters = Newsletter.objects.all().order_by('-date')
+    
 
-    return render(request, 'newsletter.html', {'newsletters' : newsletters})
+    if request.method == 'POST':
+        if 'subscribe_submit' in request.POST:
+            newsletter = newsletters[0]
+            form = SubForm(request.POST)
+            if form.is_valid():
+                sub = Subscriber.objects.create(
+                    first_name=form.cleaned_data.get('first_name').lower(),
+                    last_name=form.cleaned_data.get('last_name').lower(),
+                    email=form.cleaned_data.get('email').lower()
+                )
+                send_mail(
+                    'Subscription Confirmation - SCCMS',
+                    '',
+                    from_email='neondodongo@gmail.com',
+                    recipient_list=[sub.email],
+                    fail_silently=False,
+                    html_message=sub_confirmation_html.format(
+                        '{0} {1}'.format(sub.first_name, sub.last_name),
+                        '{0} {1}'.format(newsletter.month, newsletter.year),
+                        newsletter.pdf_file.url,
+                        newsletter.pdf_img.url
+                    )
+                )
+                sub.save()
+                return render(request, 'sub_confirm.html', {'sub':sub, 'newsletter':newsletter})
+        
+        elif 'unsubscribe_submit' in request.POST:
+            form = SubForm(request.POST)
+            if form.is_valid():
+                unsub_first = form.cleaned_data.get('first_name').lower()
+                unsub_last = form.cleaned_data.get('last_name').lower()
+                unsub_email = form.cleaned_data.get('email').lower()
+
+                sub = Subscriber.object.all().filter(email = unsub_email).distinct()
+                send_mail(
+                    'Unsubscription Confirmation - SCCMS',
+                    '',
+                    from_email='neondodongo@gmail.com',
+                    recipient_list=[sub.email],
+                    fail_silently=False,
+                    html_message=unsub_confirmation_html.format(
+                        '{0} {1}'.format(sub.first_name, sub.last_name),
+                    )
+                )
+                sub.delete()
+                return render(request, 'unsub_confirm.html', {'sub':sub})
+        else:
+            form = SubForm()
+
+    return render(request, 'newsletter.html', {'newsletters' : reversed_newsletters, "form" : form})
