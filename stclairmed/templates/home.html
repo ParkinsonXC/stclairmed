@@ -8,14 +8,10 @@
     <p>You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
       to search for doctors and practices.
     </p>
-    <form class="form-inline justify-content-center">
-        <div class="input-group">
-          <input type="email" class="form-control" size="50" placeholder="Keywords" required>
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-primary">Search</button>
-          </div>
-        </div>
-      </form>
+    <form class="form-inline justify-content-center" novalidate>
+      {% csrf_token %}
+      {% include 'includes/keyword_form.html' %}
+    </form>
 </div>
 
 

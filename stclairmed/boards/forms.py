@@ -35,5 +35,14 @@ class ContactForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Specialty #TODO Add a new model that allows users to contact Elaine
+        model = Specialty 
         fields = ['name', 'phone', 'email', 'message']
+
+class SuperSearch(forms.Form):
+    keyword = forms.CharField(
+        max_length = 45,
+        min_length = 1
+    )
+
+    class Meta:
+        fields = ['keyword']

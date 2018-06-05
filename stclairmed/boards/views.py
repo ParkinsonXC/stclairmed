@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 
 from .models import Specialty, Practice, Doctor
-from .forms import SearchForm, ContactForm
+from .forms import SearchForm, ContactForm, SuperSearch
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
 from newsletters.models import Newsletter
@@ -21,7 +21,8 @@ import datetime
 def home(request):
     #TODO: handle post requests
     contact_form = ContactForm()
-    return render(request, 'home.html', {'form':contact_form})
+    supersearch_form = SuperSearch()
+    return render(request, 'home.html', {'contact_form':contact_form, 'super_search_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests
