@@ -21,3 +21,13 @@ class SubForm(forms.ModelForm):
     class Meta:
         model = Subscriber
         fields = ['first_name', 'last_name', 'email']
+
+class UnsubForm(forms.Form):
+
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={'placeholder' : 'E-Mail'}),
+        max_length=100
+    )
+
+    class Meta:
+        fields = ['email']

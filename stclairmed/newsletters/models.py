@@ -65,7 +65,7 @@ class Newsletter(models.Model):
 class Subscriber(models.Model):
     first_name = models.CharField(max_length=30, default="", blank=False)
     last_name = models.CharField(max_length=50, default="", blank=False)
-    email = models.EmailField(max_length=100, default="", blank=False)
+    email = models.EmailField(max_length=100, default="", blank=False, unique=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
