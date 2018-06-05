@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
+from django.http import HttpResponse
 
 from .models import Specialty, Practice, Doctor
 from .forms import SearchForm, ContactForm
+from .contact_email_confirm import contact_email
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
 from newsletters.models import Newsletter
@@ -19,8 +21,28 @@ import datetime
 
 # Create your views here.
 def home(request):
-    #TODO: handle post requests
-    contact_form = ContactForm()
+    contact_form = ContactForm()   
+    if request.method == 'POST':
+        #print('Is POST Request')
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print('Form is valid')
+            name = form.cleaned_data.get('name')
+            phone = form.cleaned_data.get('phone')
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+
+            send_mail(
+                'SCCMS CONTACT - {0}'.format(name),
+                '',
+                from_email='neondodongo@gmail.com',
+                # Change this to SCCMS email
+                recipient_list=['neondodongo@gmail.com'],
+                fail_silently=False,
+                html_message=contact_email.format(name, email, message)
+            )
+            return render(request, 'contact_confirm.html')  
+ 
     return render(request, 'home.html', {'form':contact_form})
 
 def directory(request):

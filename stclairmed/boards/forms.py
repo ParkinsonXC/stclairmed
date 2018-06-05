@@ -17,12 +17,10 @@ class SearchForm(forms.Form):
     class Meta:
         fields = ['term', 'field']
 
-class ContactForm(forms.ModelForm):
+class ContactForm(forms.Form):
     name = forms.CharField(
         max_length=35,
     )
-
-    phone = forms.IntegerField()
 
     email = forms.EmailField()
     #TODO: Confirm your email field?
@@ -35,5 +33,4 @@ class ContactForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Specialty #TODO Add a new model that allows users to contact Elaine
-        fields = ['name', 'phone', 'email', 'message']
+        fields = ['name', 'email', 'message']

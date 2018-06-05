@@ -21,7 +21,6 @@ email_confirmation_html = '''
                     <h4>{3}, {4}</h4>
                     <hr>
                     <h1>Hello, {5}!</h1>
-                    <p>hUM dUm tIddIEd! We'll see ya there! Gurry up ya things now!</p>
                     <p>{6}</p>
                 </div>
             </div>
