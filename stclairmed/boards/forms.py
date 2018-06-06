@@ -25,7 +25,7 @@ class ContactForm(forms.ModelForm):
     phone = forms.IntegerField()
 
     email = forms.EmailField()
-    #TODO: Confirm your email field?
+
     message = forms.CharField(
         widget=forms.Textarea(
             attrs={'rows':5, 'placeholder':"Type your comment/question here."}

@@ -28,8 +28,6 @@ urlpatterns = [
     url(r'^events/(?P<pk>\d+)/$', views.event_rsvp, name='event_rsvp'),
     url(r'^news/$', views.news, name='news'),
     url(r'^newsletter/$', views.newsletter, name='newsletter'),
-    url(r'^hospitals/$', views.hospitals, name='hospitals'),
-    url(r'^contact/$', views.contact, name='contact'),
     url(r'^specialty/(?P<pk>\d+)/$', views.spec_description, name="spec_description"),
     url(r'^admin/', admin.site.urls),
     

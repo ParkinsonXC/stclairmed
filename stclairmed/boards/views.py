@@ -86,12 +86,6 @@ def directory(request):
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
 
-def contact(request):
-    #TODO: Handle post requests
-    contact_form = ContactForm()
-
-    return render(request, 'contact.html', {'form':contact_form})
-
 def officers(request):
 
     officers = Officer.objects.all()
@@ -162,13 +156,6 @@ def news(request):
 
     return render(request, 'news.html', {'announcements' : announcements})
 
-
-
-
-
-
-def hospitals(request):
-    return render(request, 'hospitals.html')
 
 def spec_description(request, pk):
     specialty = get_object_or_404(Specialty, pk=pk)
