@@ -22,35 +22,4 @@
     {% render_table doctor_table %}
     {% endif %}    
 </div>
-
-
-
-<!-- <div class="container bg-grey">
-        <table class="table">
-            <thead class="thead-inverse">
-                <tr>
-                    <th>Name</th>
-                    <th>First Name</th>
-                    <th>Number</th>
-                    <th>City</th>
-                    <th>State</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for q in qs %}
-                <tr>
-                    {% if q.name %}
-                        <td>{{q.name}}</td>
-                    {% elif q.first_name %}
-                        <td>{{q.first_name}}</td>
-                    {% endif %}
-                    <td>{{q.phone_number}}</td>
-                    <td>{{q.city}}</td>
-                    <td>{{q.state}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        </div> -->
-
 {% endblock %}
