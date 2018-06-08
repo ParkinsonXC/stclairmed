@@ -28,15 +28,18 @@ import datetime
 def home(request):
     contact_form = ContactForm()
     supersearch_form = SuperSearch()
+
     if request.method == 'POST':
         #print('Is POST Request')
-        form = ContactForm(request.POST)
-        if form.is_valid():
+        contact_form = ContactForm(request.POST)
+        supersearch_form = SuperSearch(request.POST)
+
+        if contact_form.is_valid():
             print('Form is valid')
-            name = form.cleaned_data.get('name')
-            phone = form.cleaned_data.get('phone')
-            email = form.cleaned_data.get('email')
-            message = form.cleaned_data.get('message')
+            name = contact_form.cleaned_data.get('name')
+            phone = contact_form.cleaned_data.get('phone')
+            email = contact_form.cleaned_data.get('email')
+            message = contact_form.cleaned_data.get('message')
 
             send_mail(
                 'SCCMS CONTACT - {0}'.format(name),
@@ -47,7 +50,11 @@ def home(request):
                 fail_silently=False,
                 html_message=contact_email.format(name, email, message)
             )
-            return render(request, 'contact_confirm.html')  
+            return render(request, 'contact_confirm.html')
+        
+        elif supersearch_form.is_valid():
+            pass 
+            
  
     return render(request, 'home.html', {'form':contact_form, 'supersearch_form':supersearch_form})
 
@@ -64,20 +71,8 @@ def directory(request):
             query = form.cleaned_data.get('term')
 
             #Creates the SQL needeed to search all selected practice fields
-            practice_or_lookup = (Q(name__icontains=query) |
-                             Q(address__icontains=query) |
-                             Q(city__icontains=query) |
-                             Q(state__icontains=query) |
-                             Q(zip_code__icontains=query) |
-                             Q(phone_number__icontains=query)|
-                             Q(website__icontains=query)
-                             )
 
             #Creates the SQL needed to search all selected doctor fields
-            doctor_or_lookup = (Q(first_name__icontains=query) |
-                             Q(last_name__icontains=query) |
-                             Q(title__icontains=query)
-                             )
 
             if search_field == 'practices':
 
