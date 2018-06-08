@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.mail.message import EmailMessage
 from django.db.models import Q
 
 from .models import Specialty, Practice, Doctor

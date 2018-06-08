@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models.base import ObjectDoesNotExist
+from django.core.mail.message import EmailMessage
 
 from .models import Newsletter, Subscriber
 from .forms import SubForm, UnsubForm
