@@ -19,18 +19,22 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from boards import views
+from events import events_views
+from news import news_views
+from newsletters import newsletter_views
+from officers import officer_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^directory/$', views.directory, name='directory'),
-    url(r'^officers/$', views.officers, name='officers'),
-    url(r'^events/$', views.events, name='events'),
-    url(r'^events/(?P<pk>\d+)/$', views.event_rsvp, name='event_rsvp'),
-    url(r'^news/$', views.news, name='news'),
-    url(r'^newsletter/$', views.newsletter, name='newsletter'),
+    url(r'^officers/$', officer_views.officers, name='officers'),
+    url(r'^events/$', events_views.events, name='events'),
+    url(r'^events/(?P<pk>\d+)/$', events_views.event_rsvp, name='event_rsvp'),
+    url(r'^news/$', news_views.news, name='news'),
+    url(r'^newsletter/$', newsletter_views.newsletter, name='newsletter'),
     url(r'^specialty/(?P<pk>\d+)/$', views.spec_description, name="spec_description"),
-    url(r'^unsubscribe/$', views.unsubscribe, name='unsubscribe'),
-    url(r'^unsubscription_confirmation/$', views.unsub_confirmation, name='unsub_confirmation'),
+    url(r'^unsubscribe/$', newsletter_views.unsubscribe, name='unsubscribe'),
+    url(r'^unsubscription_confirmation/$', newsletter_views.unsub_confirmation, name='unsub_confirmation'),
     url(r'^admin/', admin.site.urls),
     
 ]
