@@ -19,14 +19,14 @@
                     {% for error in field.errors %}
                         <small class="invalid-feedback">{{error}}</small>
                     {% endfor %}
+                {% else %}
+                    {% render_field field class="form-control is-valid" %}
+                {% endif %}
             {% else %}
-                {% render_field field class="form-control is-valid" %}
+                {% render_field field class="form-control" %}       
             {% endif %}
-        {%else %}
-            {% render_field field class="form-control" %}       
-        {% endif %}
-    <hr>
-{% endfor %}
+        <hr>
+        {% endfor %}
     <br>
     <div style="text-align:center;">
     <button type="submit" class="btn btn-primary" id="rsvp-submit">Submit</button>

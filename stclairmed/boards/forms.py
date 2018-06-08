@@ -17,12 +17,10 @@ class SearchForm(forms.Form):
     class Meta:
         fields = ['term', 'field']
 
-class ContactForm(forms.ModelForm):
+class ContactForm(forms.Form):
     name = forms.CharField(
         max_length=35,
     )
-
-    phone = forms.IntegerField()
 
     email = forms.EmailField()
 
@@ -35,8 +33,8 @@ class ContactForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Specialty 
-        fields = ['name', 'phone', 'email', 'message']
+        fields = ['name', 'email', 'message']
+
 
 class SuperSearch(forms.Form):
     keyword = forms.CharField(
