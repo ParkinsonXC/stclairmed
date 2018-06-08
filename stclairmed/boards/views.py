@@ -22,7 +22,7 @@ def home(request):
     #TODO: handle post requests
     contact_form = ContactForm()
     supersearch_form = SuperSearch()
-    return render(request, 'home.html', {'contact_form':contact_form, 'super_search_form':supersearch_form})
+    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests

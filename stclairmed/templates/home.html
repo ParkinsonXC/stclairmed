@@ -8,9 +8,9 @@
     <p>You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
       to search for doctors and practices.
     </p>
-    <form class="form-inline justify-content-center" name="supersearch" novalidate>
+    <form method="post" class="form-inline justify-content-center" name="supersearch" value="supersearch" novalidate>
       {% csrf_token %}
-      {% include 'includes/keyword_form.html' %}
+      {% include 'includes/supersearch_form.html' %}
     </form>
 </div>
 
@@ -141,7 +141,7 @@
     </div><!--col-->
 
     <div class="col-sm-7"><!--add form for under here-->
-      <form method="post" name="contact" novalidate>
+      <form method="post" name="contact" value="contact" novalidate>
       {% csrf_token %}
       {% include 'includes/contact_form.html' %}
       </form>
