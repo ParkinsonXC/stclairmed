@@ -7,7 +7,7 @@ from django.db.models.base import ObjectDoesNotExist
 
 from .models import Specialty, Practice, Doctor
 
-from .forms import SearchForm, ContactForm
+from .forms import SearchForm, ContactForm, SuperSearch
 from .contact_email_confirm import contact_email
 from events.models import Event, RSVP
 from events.forms import RsvpForm, EventForm
@@ -26,7 +26,8 @@ import datetime
 
 # Create your views here.
 def home(request):
-    contact_form = ContactForm()   
+    contact_form = ContactForm()
+    supersearch_form = SuperSearch()
     if request.method == 'POST':
         #print('Is POST Request')
         form = ContactForm(request.POST)
@@ -48,7 +49,7 @@ def home(request):
             )
             return render(request, 'contact_confirm.html')  
  
-    return render(request, 'home.html', {'form':contact_form})
+    return render(request, 'home.html', {'form':contact_form, 'supersearch_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests
