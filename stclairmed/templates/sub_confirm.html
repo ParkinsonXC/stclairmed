@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Subscription Confirmation</h1>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+<div class="row align-items-center">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center">
+        <h2>Please confirm the subscription details sent to {{sub.email}}</h2>
+        <h4>*** You may have to check your spam folder ***</h4>
+    </div>
+</div>
+
+<div class="row align-items-center">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-center">
+        <h1><a href="{% url 'newsletter' %}">Back to Newsletters</a></h1>
+    </div>
+</div>
+
+
+<div class="container-fluid bg-grey">
+    <div class="row">
+    
+        <div class="col-sm-8">
+        <h2>Want to contribute?</h2>
+        <h4>
+            If you are interested in joining or contributing an article to the society, please 
+            notify us from the contact form on the <a href="{% url 'home' %}#contact">home</a> page. If you are a member and would 
+            like updates, please contact the society office with your e-mail address.
+        </h4>
+        <p>
+            Advertising space is available in the bulletin for the Medical Society of 
+            St. Clair and Madison Counties, a monthly mailer to physician members. Please 
+            <a href="{% url 'home' %}#contact">contact</a> the society for additional information.
+        </p>
+        </div><!--col-->
+
+        <div class="col-sm-4">
+            <div style="font-size:3em; color:lightslategray; text-align:center;">  
+                <i class="fas fa-pencil-alt fa-3x"></i>  
+            </div>
+        </div><!--col-->
+
+    </div><!--row-->
+</div><!--container-->
+
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% load widget_tweaks %}
+
+<form method="post" novalidate id="sub-form">
+    <div style="text-align:center;">
+        <h1>Subscribe to our Monthly Newsletter:</h2>
+        <hr>
+    </div>       
+    {% csrf_token %}
+    <div class="container">
+        {% for field in form %}
+            {% if form.is_bound %}
+                {% if field.errors %}
+                    {% render_field field class="form-control is-invalid" %}
+                    {% for error in field.errors %}
+                        <small class="invalid-feedback">{{error}}</small>
+                    {% endfor %}
+                {% else %}
+                    {% render_field field class="form-control is-valid" %}
+                {% endif %}
+            {%else %}
+                {% render_field field class="form-control" %}       
+            {% endif %}
+            <br>
+        {% endfor %}
+    </div>
+
+    
+
+<br>
+<div class="row text-center">
+    <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary" name="subscribe_submit" id="sub-submit">Submit</button>            
+    </div>
+    <div class="col-sm-6">
+        <a class="btn btn-danger" href="{% url 'unsubscribe' %}">Unsubscribe</a>            
+    </div>
+</div>
+</form>
+
+

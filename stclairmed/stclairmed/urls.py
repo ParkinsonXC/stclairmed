@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^news/$', views.news, name='news'),
     url(r'^newsletter/$', views.newsletter, name='newsletter'),
     url(r'^specialty/(?P<pk>\d+)/$', views.spec_description, name="spec_description"),
+    url(r'^unsubscribe/$', views.unsubscribe, name='unsubscribe'),
+    url(r'^unsubscription_confirmation/$', views.unsub_confirmation, name='unsub_confirmation'),
     url(r'^admin/', admin.site.urls),
     
 ]

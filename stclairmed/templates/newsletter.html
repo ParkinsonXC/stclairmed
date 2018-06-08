@@ -6,19 +6,19 @@
         <div class="col-sm-6">
             <h1>Newsletters</h1>
             <hr/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
             <h4>
-            Articles from our members and readers are welcome and will be published 
-            as space permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
-            be subject to editing and abridgment. Articles should be submitted typewritten 
-            and before the tenth of each month, prior to the publication month.
+                Articles from our members and readers are welcome and will be published 
+                as space permits, in the combined SCCMS and MCMS monthly bulletin. Articles will 
+                be subject to editing and abridgment. Articles should be submitted typewritten 
+                and before the tenth of each month, prior to the publication month.
             </h4>
+        </div>
+        <div class="col-sm-6">
+            {% include 'includes/sub_form.html' %}
         </div>
     </div>
 </div>
+
 
 <div class="container">
     <div class="row">
@@ -29,7 +29,7 @@
                 <br>
                 <h3>{{ newsletter.month }} {{ newsletter.year }}</h3>
                 <a href="{{ newsletter.pdf_file.url }}">
-                    <img class="img-fluid" src="{{ newsletter.pdf_img.url }}"/>
+                    <img class="img-fluid" style="display:block; margin:auto;"src="{{ newsletter.pdf_img.url }}"/>
                 </a>
                 <hr>
             {% endfor %}

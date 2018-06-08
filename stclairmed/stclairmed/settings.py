@@ -150,6 +150,10 @@ EMAIL_PORT = 587
 # !!! DO NOT PUSH TO REPO WITH SENSITIVE INFORMATION !!!
 # !!
 # !
+<<<<<<< HEAD
 DEFAULT_FROM_EMAIL = ''
+=======
+DEFAULT_FROM_EMAIL = 'NAME'
+>>>>>>> origin/subscription
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
