@@ -3,14 +3,17 @@ from django.core.mail.message import EmailMessage
 from django.db.models import Q
 
 from .models import Specialty, Practice, Doctor
-<<<<<<< HEAD
-
 from .forms import SearchForm, ContactForm, SuperSearch
-=======
-from .forms import SearchForm, ContactForm
->>>>>>> 925ff2d1c559ab20cf36c33162e0fc6c79fa00c4
 from .contact_email_confirm import contact_email
 from .tables import PracticeTable, SpecialtyTable, DoctorTable
+from .functions import practice_or_lookup, doctor_or_lookup, event_or_lookup, announcement_or_lookup, newsletter_or_lookup
+
+from events.models import Event
+from events.tables import EventTable
+from news.models import Announcement
+from news.tables import AnnouncementTable
+from newsletters.models import Newsletter
+from newsletters.tables import NewsletterTable
 
 # Create your views here.
 def home(request):
@@ -41,7 +44,41 @@ def home(request):
             return render(request, 'contact_confirm.html')
         
         elif supersearch_form.is_valid():
-            pass 
+            query = supersearch_form.cleaned_data.get('keyword')
+
+            practices_sql = practice_or_lookup(query)
+            doctors_sql = doctor_or_lookup(query)
+            event_sql = event_or_lookup(query)
+            announcement_sql = announcement_or_lookup(query)
+            newsletter_sql = newsletter_or_lookup(query)
+            
+            practice_set = Practice.objects.filter(practices_sql).distinct()
+            doctor_set = Doctor.objects.filter(doctors_sql).distinct()
+            event_set = Event.objects.filter(event_sql).distinct()
+            announcement_set = Announcement.objects.filter(announcement_sql).distinct()
+            newsletter_set = Newsletter.objects.filter(newsletter_sql).distinct()
+
+
+            practice_table = PracticeTable(practice_set)
+            doctor_table = DoctorTable(doctor_set)
+            event_table = EventTable(event_set)
+            announcement_table = AnnouncementTable(announcement_set)
+            newsletter_table = NewsletterTable(newsletter_set)
+
+            qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
+            results = 0
+            for query_set in qs:
+                for i in query_set:
+                    results += 1
+            
+
+
+            return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
+                                                              'doctor_table':doctor_table, 
+                                                              'event_table':event_table,
+                                                              'announcement_table':announcement_table,
+                                                              'newsletter_table':newsletter_table})
+
             
  
     return render(request, 'home.html', {'form':contact_form, 'supersearch_form':supersearch_form})
@@ -64,19 +101,19 @@ def directory(request):
 
             if search_field == 'practices':
 
-                qs = Practice.objects.filter(practice_or_lookup).distinct()
+                qs = Practice.objects.filter(practice_or_lookup(query)).distinct()
                 practice_table = PracticeTable(qs)
                 return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table})
                 
             elif search_field == 'doctors':
                 
-                qs = Doctor.objects.filter(doctor_or_lookup).distinct()
+                qs = Doctor.objects.filter(doctor_or_lookup(query)).distinct()
                 doctor_table = DoctorTable(qs)
                 return render(request, 'directory_results.html', {'qs':qs, 'doctor_table':doctor_table})
 
             else:
-                practice_qs = Practice.objects.filter(practice_or_lookup).distinct()
-                doctor_qs = Doctor.objects.filter(doctor_or_lookup).distinct()
+                practice_qs = Practice.objects.filter(practice_or_lookup(query)).distinct()
+                doctor_qs = Doctor.objects.filter(doctor_or_lookup(query)).distinct()
                 
                 practice_table = PracticeTable(practice_qs)
                 doctor_table = DoctorTable(doctor_qs)
