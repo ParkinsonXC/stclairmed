@@ -151,6 +151,6 @@ EMAIL_PORT = 587
 # !!
 # !
 # Don't push unless the next three fields contain empty strings
-DEFAULT_FROM_EMAIL = 'spencer.tyminski@gmail.com' # enter sender email
-EMAIL_HOST_USER = 'spencer.tyminski@gmail.com' # enter sender email
-EMAIL_HOST_PASSWORD = 'styski21' # enter password for email
+DEFAULT_FROM_EMAIL = '' # enter sender email
+EMAIL_HOST_USER = '' # enter sender email
+EMAIL_HOST_PASSWORD = '' # enter password for email
