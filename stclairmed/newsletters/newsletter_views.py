@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models.base import ObjectDoesNotExist
 from django.core.mail.message import EmailMessage
+from django.core.mail import send_mail
 
 from .models import Newsletter, Subscriber
 from .forms import SubForm, UnsubForm
@@ -41,7 +42,6 @@ def newsletter(request):
                 email.body = sub_confirmation_html.format(
                         '{0} {1}'.format(sub.first_name, sub.last_name)
                     )
-                # email.from_email = "St. Clair County Medical Society <spencer.tyminski@gmail.com>"
                 email.to = [sub.email]
                 email.attach(''+ newsletter.month + '' + newsletter.year + '.pdf', newsletter.pdf_file.read(), mimetype="application/pdf") # Attach a file directly
 
@@ -80,9 +80,9 @@ def unsubscribe(request):
                     '{0} {1}'.format(unsub.first_name, unsub.last_name),
                 )
             )
-            # unsub.delete()
+            unsub.delete()
             form = UnsubForm()
-            sent_unsub_link_confirmation = "An E-Mail containing the unsubscription confirmation link has been sent to " + unsub.email
+            sent_unsub_link_confirmation = "An E-Mail containing confirmation has been sent to " + unsub.email
             return render(request, 'unsubscribe.html', {'form':form, 'unsubconf':sent_unsub_link_confirmation})
         else:
             form = SubForm()
@@ -91,10 +91,3 @@ def unsubscribe(request):
         form = UnsubForm()
 
     return render(request, 'unsubscribe.html', {"form" : form})
-
-def unsub_confirmation(request):
-
-    #TODO Create Token before sending the unsub confirmation link to the user
-    #TODO Receieve Token, find subscriber, and subscriber.delete() then present the confirmation page
-
-    return render(request, 'unsub_confirm.html')

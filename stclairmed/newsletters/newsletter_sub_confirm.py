@@ -40,13 +40,8 @@ unsub_confirmation_html = '''
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4"><h2>You will be missed, {0}</h2></div>
+            <div class="col-sm-4"><h2>Feel free to re-subscribe anytime, {0}!</h2></div>
         </div>
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <a href="http://127.0.0.1:8000/unsubscribe_confirmation/">Click here to confirm your decision to unsubscribe</a>
-            </div>
     </div>
     
     

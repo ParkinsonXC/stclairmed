@@ -150,8 +150,7 @@ EMAIL_PORT = 587
 # !!! DO NOT PUSH TO REPO WITH SENSITIVE INFORMATION !!!
 # !!
 # !
-
-DEFAULT_FROM_EMAIL = ''
-
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+# Don't push unless the next three fields contain empty strings
+DEFAULT_FROM_EMAIL = 'spencer.tyminski@gmail.com' # enter sender email
+EMAIL_HOST_USER = 'spencer.tyminski@gmail.com' # enter sender email
+EMAIL_HOST_PASSWORD = 'styski21' # enter password for email
