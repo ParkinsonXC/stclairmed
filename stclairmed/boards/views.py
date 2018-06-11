@@ -80,7 +80,7 @@ def home(request):
 
             
  
-    return render(request, 'home.html', {'form':contact_form, 'supersearch_form':supersearch_form})
+    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests
