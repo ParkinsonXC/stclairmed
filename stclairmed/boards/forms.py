@@ -3,15 +3,21 @@ from .models import Specialty, Practice
 
 class SearchForm(forms.Form):
     term = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'required': True,
+                'placeholder': 'Search term...',            
+            }
+        ),
         max_length=35,
         help_text = "The max length of the name is 35 letters."        
         )
 
     choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
     my_choice_field = forms.ChoiceField(
-        widget=forms.RadioSelect(), 
+        widget=forms.RadioSelect(attrs={'required': True }), 
         choices=choices,
-        help_text="Test test")
+        help_text="Select a field to search in, or select 'All' to search all fields")
     
 
     class Meta:
@@ -19,15 +25,19 @@ class SearchForm(forms.Form):
 
 class ContactForm(forms.Form):
     name = forms.CharField(
+        required=True,
         max_length=35,
     )
 
-    email = forms.EmailField()
+    email = forms.EmailField(
+        required=True,
+    )
 
     message = forms.CharField(
         widget=forms.Textarea(
             attrs={'rows':5, 'placeholder':"Type your comment/question here."}
         ),
+        required=True,
         max_length=4000,
         help_text="You may not type a message longer than 4000 characters."
     )

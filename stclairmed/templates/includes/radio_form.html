@@ -1,7 +1,12 @@
 {% load widget_tweaks %}
 
   <div class="form-group">
-    {% render_field form.term class="form-control" placeholder="Keywords" %}
+    {% render_field form.term class="form-control" %}
+    {% if form.term.errors %}
+      {% for error in form.term.errors %}
+        <small>{{error}}</small>
+      {% endfor %}
+    {% endif %}
   </div>
       {% for choice in form.my_choice_field.field.choices %}
       <div class="form-check form-check-inline">
@@ -14,5 +19,11 @@
       </div>
       {% endfor %}
       <button type"submit" class="btn btn-primary">Search</button><br/>
-      <small>Select a field to search in or select "All" to search all fields</small>
-
+      <small>{{form.my_choice_field.help_text}}</small>
+      {% if form.is_bound %}
+        {% if form.my_choice_field.errors %}
+          {% for error in form.my_choice_field.errors %}
+            <small>{{error}}</small>
+          {% endfor %}
+        {% endif %}
+      {% endif %}

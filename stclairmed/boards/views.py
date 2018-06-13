@@ -89,14 +89,8 @@ def directory(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             search_field = form.cleaned_data.get('my_choice_field')
-            # search_field = request.POST.get('my_choice_field')
-            # query = request.POST.get('term')
 
             query = form.cleaned_data.get('term')
-
-            #Creates the SQL needeed to search all selected practice fields
-
-            #Creates the SQL needed to search all selected doctor fields
 
             if search_field == 'practices':
 
