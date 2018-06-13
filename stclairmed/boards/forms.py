@@ -5,17 +5,18 @@ class SearchForm(forms.Form):
     term = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'required': True,
                 'placeholder': 'Search term...',            
             }
         ),
-        max_length=35,
-        help_text = "The max length of the name is 35 letters."        
+        required = True,
+        max_length = 35,
+        help_text = "The max length of the term is 35 letters."        
         )
 
     choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
     my_choice_field = forms.ChoiceField(
-        widget=forms.RadioSelect(attrs={'required': True }), 
+        widget=forms.RadioSelect(), 
+        required=True,
         choices=choices,
         help_text="Select a field to search in, or select 'All' to search all fields")
     

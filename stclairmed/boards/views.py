@@ -82,6 +82,17 @@ def home(request):
  
     return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
 
+def radiotest(request):
+    form = SearchForm()
+    if request.method == 'POST':
+        print('post request')
+        form = SearchForm(request.POST)
+        pass
+        #Here I was just trying to catch errors on the backend but never got too far into it
+
+    return render(request, 'includes/radio_test_form.html', {'form': form})
+
+
 def directory(request):
     #TODO: Handle post requests
     
