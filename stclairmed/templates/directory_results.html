@@ -18,16 +18,24 @@
     </div>
 </div>
 
-<div class="container bg-grey">
+<div class="container-fluid bg-grey">
     {% if practice_table %}
-    <h3>Practices</h3>
-    <hr/>
-    {% render_table practice_table %}
+    <div class="table-responsive">
+        <h3>Practices</h3>
+        <hr/>
+        <div class="col-sm-12">
+            {% render_table practice_table %}
+        </div>
+    </div>
     {% endif %}
     {% if doctor_table %}
-    <h3>Doctors</h3>
-    <hr/>
-    {% render_table doctor_table %}
-    {% endif %} 
+    <div class="table-responsive">
+        <h3>Doctors</h3>
+        <hr/>
+        <div class="col-sm-12">
+            {% render_table doctor_table %}
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

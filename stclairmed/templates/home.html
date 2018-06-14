@@ -148,7 +148,7 @@
     </div><!--col-->
 
     <div class="col-sm-7"><!--add form for under here-->
-      <form method="post" name="contact" value="contact" novalidate>
+      <form method="post" name="contact" id="contact" value="contact" novalidate>
       {% csrf_token %}
       {% include 'includes/contact_form.html' %}
       </form>
