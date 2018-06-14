@@ -12,6 +12,13 @@
       {% csrf_token %}
       {% include 'includes/supersearch_form.html' %}
     </form>
+    {% if super_error %}
+    <div class="row text-center">
+      <div class="col-sm-12">
+          <small class="text-center" style="color:red;">{{super_error}}</small>
+      </div> 
+    </div>
+    {% endif %}   
 </div>
 
 

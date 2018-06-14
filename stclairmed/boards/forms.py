@@ -1,10 +1,10 @@
 from django import forms
-from .models import Specialty, Practice
 
 class SearchForm(forms.Form):
     term = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Keywords'}),
+        min_length=1,
         max_length=35,
-        help_text = "The max length of the name is 35 letters."        
         )
 
     choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
@@ -12,19 +12,6 @@ class SearchForm(forms.Form):
         widget=forms.RadioSelect(),
         choices=choices
         )
-
-    # choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
-    # my_choice_field = forms.--------BooleanField(
-    #     widget=forms.RadioSelect(
-    #         choices=choices,
-    #     ), 
-    #     help_text="Test test",
-    #     initial="all"
-    #     )
-    
-
-    # rs_field = forms.ChoiceField(choices=(('Y','Yes'), ('N','No')),
-    #     initial='N', widget=forms.RadioSelect)
 
     class Meta:
         fields = ['term', 'field']

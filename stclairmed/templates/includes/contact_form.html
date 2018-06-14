@@ -1,7 +1,85 @@
 {% load widget_tweaks %}
 
-  <div class="row">
+<div class="row">
+  <div class="col-sm-6 form-group">
+    {% if contact_form.is_bound %}
+      {% if contact_form.name.errors %}
+        {% render_field contact_form.name class="form-control is-invalid" placeholder="Name"%}
+        {% for error in contact_form.name.errors %}
+          <div class="invalid-feedback">
+            {{error}}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field contact_form.name class="form-control is-valid" placeholder="Name"%}
+      {% endif %}
+    {% else %}
+      {% render_field contact_form.name class="form-control" placeholder="Name"%}
+    {% endif %}
+  </div>
+  <div class="col-sm-6 form-group">
+    {% if contact_form.is_bound %}
+      {% if contact_form.email.errors %}
+        {% render_field contact_form.email class="form-control is-invalid" placeholder="Email"%}
+        {% for error in contact_form.email.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+      {% else %}
+        {% render_field contact_form.email class="form-control is-valid" placeholder="Email"%}
+      {% endif %}
+    {% else %}
+      {% render_field contact_form.email class="form-control" placeholder="Email"%}
+    {% endif %}
+    
+  </div>
+</div>
+
+{% if contact_form.is_bound %}
+  {% if contact_form.message.errors %}
+    {% render_field contact_form.message class="form-control is-invalid" placeholder="Message" %}
+    {% for error in contact_form.message.errors %}
+      <div class="invalid-feedback">
+        {{error}}
+      </div>
+    {% endfor %}
+  {% else %}
+    {% render_field contact_form.message class="form-control is-valid" placeholder="Message" %}
+  {% endif %}
+{% else %}
+  {% render_field contact_form.message class="form-control" placeholder="Message" %}
+{% endif %}
+
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <button class="btn btn-primary float-right" name="contact" type="submit">Send</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+    <div class="row">
     <div class="col-sm-6 form-group">
+      
+      
       {% render_field contact_form.name class="form-control" placeholder="Name"%}
     </div>
 
@@ -10,6 +88,8 @@
     </div>
   </div>
 
+
+
   {% render_field contact_form.message class="form-control" %}
   <div class="row">
     <div class="col-sm-12 form-group">
@@ -17,5 +97,4 @@
       <button class="btn btn-default pull-right" type="submit">Send</button>
     </div>
   </div>
-  
-
+ -->

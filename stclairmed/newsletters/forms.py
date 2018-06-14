@@ -26,7 +26,8 @@ class UnsubForm(forms.Form):
 
     email = forms.EmailField(
         widget=forms.TextInput(attrs={'placeholder' : 'E-Mail'}),
-        max_length=100
+        max_length=100,
+        min_length=1,
     )
 
     class Meta:

@@ -1,6 +1,4 @@
 from django import forms
-from django.core.validators import MinValueValidator, MaxValueValidator
-
 from .models import Event, RSVP
 
 class EventForm(forms.ModelForm):

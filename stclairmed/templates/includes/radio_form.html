@@ -1,9 +1,13 @@
 {% load widget_tweaks %}
 
-  <div class="form-group">
-    {% render_field form.term class="form-control" placeholder="Keywords" %}
-  </div>
-      {% for choice in form.my_choice_field.field.choices %}
+<div class="form-group">
+    {% render_field form.term class="form-control" %}
+    {% if error %}
+      <small class="text-center" style="color:red;">{{error}}</small>
+    {% endif %}   
+</div>
+
+{% for choice in form.my_choice_field.field.choices %}
       <div class="form-check form-check-inline">
         <label class="form-check-label">
           {% if choice.0 == "all" %}

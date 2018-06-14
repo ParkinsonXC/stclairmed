@@ -20,71 +20,72 @@ def home(request):
     supersearch_form = SuperSearch()
 
     if request.method == 'POST':
-        #print('Is POST Request')
         contact_form = ContactForm(request.POST)
         supersearch_form = SuperSearch(request.POST)
 
-        if contact_form.is_valid():
-            print('Form is valid')
-            name = contact_form.cleaned_data.get('name')
-            phone = contact_form.cleaned_data.get('phone')
-            email = contact_form.cleaned_data.get('email')
-            message = contact_form.cleaned_data.get('message')
+        if 'contact' in request.POST:
+            if contact_form.is_valid():
+                print('Form is valid')
+                name = contact_form.cleaned_data.get('name')
+                phone = contact_form.cleaned_data.get('phone')
+                email = contact_form.cleaned_data.get('email')
+                message = contact_form.cleaned_data.get('message')
 
-            send_mail(
-                'SCCMS CONTACT - {0}'.format(name),
-                '',
-                from_email='neondodongo@gmail.com',
-                # Change this to SCCMS email
-                recipient_list=['neondodongo@gmail.com'],
-                fail_silently=False,
-                html_message=contact_email.format(name, email, message)
-            )
-            return render(request, 'contact_confirm.html')
-        
-        elif supersearch_form.is_valid():
-            query = supersearch_form.cleaned_data.get('keyword')
-
-            practices_sql = practice_or_lookup(query)
-            doctors_sql = doctor_or_lookup(query)
-            event_sql = event_or_lookup(query)
-            announcement_sql = announcement_or_lookup(query)
-            newsletter_sql = newsletter_or_lookup(query)
+                send_mail(
+                    'SCCMS CONTACT - {0}'.format(name),
+                    '',
+                    from_email='neondodongo@gmail.com',
+                    # Change this to SCCMS email
+                    recipient_list=['neondodongo@gmail.com'],
+                    fail_silently=False,
+                    html_message=contact_email.format(name, email, message)
+                )
+                return render(request, 'contact_confirm.html')
             
-            practice_set = Practice.objects.filter(practices_sql).distinct()
-            doctor_set = Doctor.objects.filter(doctors_sql).distinct()
-            event_set = Event.objects.filter(event_sql).distinct()
-            announcement_set = Announcement.objects.filter(announcement_sql).distinct()
-            newsletter_set = Newsletter.objects.filter(newsletter_sql).distinct()
+        else:
+            if supersearch_form.is_valid():
+                query = supersearch_form.cleaned_data.get('keyword')
+
+                practices_sql = practice_or_lookup(query)
+                doctors_sql = doctor_or_lookup(query)
+                event_sql = event_or_lookup(query)
+                announcement_sql = announcement_or_lookup(query)
+                newsletter_sql = newsletter_or_lookup(query)
+                
+                practice_set = Practice.objects.filter(practices_sql).distinct()
+                doctor_set = Doctor.objects.filter(doctors_sql).distinct()
+                event_set = Event.objects.filter(event_sql).distinct()
+                announcement_set = Announcement.objects.filter(announcement_sql).distinct()
+                newsletter_set = Newsletter.objects.filter(newsletter_sql).distinct()
 
 
-            practice_table = PracticeTable(practice_set)
-            doctor_table = DoctorTable(doctor_set)
-            event_table = EventTable(event_set)
-            announcement_table = AnnouncementTable(announcement_set)
-            newsletter_table = NewsletterTable(newsletter_set)
+                practice_table = PracticeTable(practice_set)
+                doctor_table = DoctorTable(doctor_set)
+                event_table = EventTable(event_set)
+                announcement_table = AnnouncementTable(announcement_set)
+                newsletter_table = NewsletterTable(newsletter_set)
 
-            qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
-            results = 0
-            for query_set in qs:
-                for i in query_set:
-                    results += 1
-            
-
-
-            return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
-                                                              'doctor_table':doctor_table, 
-                                                              'event_table':event_table,
-                                                              'announcement_table':announcement_table,
-                                                              'newsletter_table':newsletter_table})
-
-            
+                qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
+                results = 0
+                for query_set in qs:
+                    for i in query_set:
+                        results += 1    
+                return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
+                                                                'doctor_table':doctor_table, 
+                                                                'event_table':event_table,
+                                                                'announcement_table':announcement_table,
+                                                                'newsletter_table':newsletter_table})
+            else:
+                error = "No results for empty query."
+                contact_form = ContactForm()
+                supersearch_form = SuperSearch()
+                return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form': supersearch_form, 'super_error':error})          
  
     return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests
-    
+    specialties = Specialty.objects.order_by('name')
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -127,10 +128,13 @@ def directory(request):
             
                 form = SearchForm()
                 return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table, 'doctor_table':doctor_table, 'form':form})
-                
-                
+        else:
+            error = "No results for empty query."
+            form = SearchForm()
+            return render(request, 'directory.html', {'form':form, 'error':error, 'specialties': specialties})  
+
+
     #if request.method == 'GET':
-    specialties = Specialty.objects.order_by('name')
     form = SearchForm()
     
     return render(request, 'directory.html', {'specialties':specialties, 'form': form})
