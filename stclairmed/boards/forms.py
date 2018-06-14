@@ -9,10 +9,22 @@ class SearchForm(forms.Form):
 
     choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
     my_choice_field = forms.ChoiceField(
-        widget=forms.RadioSelect(), 
-        choices=choices,
-        help_text="Test test")
+        widget=forms.RadioSelect(),
+        choices=choices
+        )
+
+    # choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
+    # my_choice_field = forms.--------BooleanField(
+    #     widget=forms.RadioSelect(
+    #         choices=choices,
+    #     ), 
+    #     help_text="Test test",
+    #     initial="all"
+    #     )
     
+
+    # rs_field = forms.ChoiceField(choices=(('Y','Yes'), ('N','No')),
+    #     initial='N', widget=forms.RadioSelect)
 
     class Meta:
         fields = ['term', 'field']

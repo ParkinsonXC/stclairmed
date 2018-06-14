@@ -80,7 +80,7 @@ def home(request):
 
             
  
-    return render(request, 'home.html', {'form':contact_form, 'supersearch_form':supersearch_form})
+    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
 
 def directory(request):
     #TODO: Handle post requests
@@ -102,13 +102,15 @@ def directory(request):
 
                 qs = Practice.objects.filter(practice_or_lookup(query)).distinct()
                 practice_table = PracticeTable(qs)
-                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table})
+                form = SearchForm()
+                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table, 'form':form})
                 
             elif search_field == 'doctors':
                 
                 qs = Doctor.objects.filter(doctor_or_lookup(query)).distinct()
                 doctor_table = DoctorTable(qs)
-                return render(request, 'directory_results.html', {'qs':qs, 'doctor_table':doctor_table})
+                form = SearchForm()
+                return render(request, 'directory_results.html', {'qs':qs, 'doctor_table':doctor_table, 'form':form})
 
             else:
                 practice_qs = Practice.objects.filter(practice_or_lookup(query)).distinct()
@@ -123,7 +125,8 @@ def directory(request):
                 for i in doctor_qs:
                     qs.append(' ')            
             
-                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table, 'doctor_table':doctor_table})
+                form = SearchForm()
+                return render(request, 'directory_results.html', {'qs':qs, 'practice_table':practice_table, 'doctor_table':doctor_table, 'form':form})
                 
                 
     #if request.method == 'GET':

@@ -54,4 +54,5 @@ $(window).scroll(function() {
       //Toggle visibility of overlay div
       e1.style.visibility = (e1.style.visibility == "visible") ? "hidden": "visible";
     });
+
   })

@@ -3,10 +3,18 @@
 {% block body %}
 <div class="jumbotron">
     <div class="row">
-        <div class="col-sm-6">
-        <h1>{{qs|length}} Search Result(s)</h1>
+        <div class="col-sm-8">
+        <h1>St. Clair Medical Society | {{qs|length}} Search Result(s)</h1>
         <hr/>
         </div>
+        <div class="col-sm-4 form-group">
+            <form method="post" novalidate>
+                <h1>Search</h1>
+                <hr>
+                {% csrf_token %}
+                {% include 'includes/radio_form.html' %}
+            </form>
+        </div><!--col-->
     </div>
 </div>
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="jumbotron">
+<div class="jumbotron" id="subscribe">
     <div class="row">
-        <div class="col-sm-6">
-            <h1>Newsletters</h1>
+        <div class="col-sm-8">
+            <h1>St. Clair Medical Society | Newsletters</h1>
             <hr/>
             <h4>
                 Articles from our members and readers are welcome and will be published 
@@ -13,7 +13,7 @@
                 and before the tenth of each month, prior to the publication month.
             </h4>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             {% include 'includes/sub_form.html' %}
         </div>
     </div>
@@ -22,8 +22,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 text-center">
             <h1 class="text-center">NEWSLETTERS</h1>
             {% for newsletter in newsletters %}
                 <br>

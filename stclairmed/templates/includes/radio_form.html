@@ -6,10 +6,11 @@
       {% for choice in form.my_choice_field.field.choices %}
       <div class="form-check form-check-inline">
         <label class="form-check-label">
-          <input type="radio" name="my_choice_field" value="{{choice.0}}"
-          {% ifequal form.my_choice_field.data choice.0 %}
-          checked="checked"
-          {% endifequal %} /> {{choice.1}}
+          {% if choice.0 == "all" %}
+          <input type="radio" checked="true" name="my_choice_field" value="{{choice.0}}"/> {{choice.1}}
+          {% else %}
+          <input type="radio" checked="false" name="my_choice_field" value="{{choice.0}}"/> {{choice.1}}
+          {% endif %}
         </label>
       </div>
       {% endfor %}
