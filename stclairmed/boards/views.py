@@ -66,10 +66,17 @@ def home(request):
                 newsletter_table = NewsletterTable(newsletter_set)
 
                 qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
+                no_results = []
+
                 results = 0
                 for query_set in qs:
+                    if len(query_set) == 0:
+                        no_results.append(query_set)
+                        #TODO: find a way to render only tables with at least one result in them
+
                     for i in query_set:
                         results += 1    
+    
                 return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
                                                                 'doctor_table':doctor_table, 
                                                                 'event_table':event_table,
