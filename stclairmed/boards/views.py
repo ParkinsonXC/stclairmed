@@ -13,6 +13,8 @@ from news.models import Announcement
 from news.tables import AnnouncementTable
 from newsletters.models import Newsletter
 from newsletters.tables import NewsletterTable
+from officers.models import Officer, Role
+from officers.tables import OfficerTable
 
 # Create your views here.
 def home(request):
@@ -88,7 +90,10 @@ def home(request):
                 supersearch_form = SuperSearch()
                 return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form': supersearch_form, 'super_error':error})          
  
-    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
+    president = Officer.objects.get(position="President")
+    
+    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form,
+                                            'president':president})
 
 def directory(request):
     #TODO: Handle post requests

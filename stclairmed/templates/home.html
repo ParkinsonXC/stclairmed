@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="row">
-  <div class="col-sm-6 jumbotron">
+<div class="row jumbotron">
+  <div class="col-sm-6">
     <div class = "text-center">
         <h1>Welcome to the St. Clair County Medical Society</h1>
         <h5>For over 135 years the SCCMS has worked to maintain 
@@ -20,12 +20,22 @@
               <small class="text-center" style="color:red;">{{super_error}}</small>
           </div> 
         </div>
-        {% endif %}   
+        {% endif %}
+        <br/>
     </div>
   </div>
 
-  <div class="col-sm-6 jumbotron">
-      <h1>Our president</h1>
+  <div class="col-sm-6">
+    <div class="text-center">
+      <h1>President of SCCMS</h1>
+      <h5>{{president}}</h5>
+      <br/>
+      <img src="https://i.pinimg.com/originals/80/4a/18/804a18b515f40c240c03a26a960bbfdf.jpg" class="img-thumbnail float-right" style="max-height: 200px;"/>      
+      <p class="align-items-center">He's literally mad all the time. Never has his arms uncrossed and his face is stuck in 
+        that position until the day he days. To quote the late Lady Gaga, he was 'born that way'.
+        {{president.first_name}} has been with us since 2008.
+      </p>
+    </div>
   </div>
 </div>
 
