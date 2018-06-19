@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="row jumbotron">
-  <div class="col-sm-6">
+  <div class="col-sm-6 fadein">
     <div class = "text-center">
         <h1>Welcome to the St. Clair County Medical Society</h1>
         <h5>For over 135 years the SCCMS has worked to maintain 
@@ -25,17 +25,23 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-6 fadein">
     <div class="text-center">
       <h1>President of SCCMS</h1>
+    </div><br/>
+    <div class="float-left">
       <h5>{{president}}</h5>
       <br/>
-      <img src="https://i.pinimg.com/originals/80/4a/18/804a18b515f40c240c03a26a960bbfdf.jpg" class="img-thumbnail float-right" style="max-height: 200px;"/>      
-      <p class="align-items-center">He's literally mad all the time. Never has his arms uncrossed and his face is stuck in 
-        that position until the day he days. To quote the late Lady Gaga, he was 'born that way'.
-        {{president.first_name}} has been with us since 2008.
-      </p>
+      <img src="https://www.motherjones.com/wp-content/uploads/2017/09/426_20170928_musk_2000x1124.jpg?w=990" class="img-thumbnail" style="max-height: 200px; max-width: 200px;"/>
     </div>
+    <div class="text-center">
+      <h5>SCCMS officers</h5>
+      <br/>
+      <div style="text-align:center;">    
+        <a href="{% url 'officers' %}"><img src="media/media/MedSocEmblem.png"></a>
+      </div>
+    </div>
+      
   </div>
 </div>
 
