@@ -60,6 +60,16 @@ def home(request):
                 announcement_set = Announcement.objects.filter(announcement_sql).distinct()
                 newsletter_set = Newsletter.objects.filter(newsletter_sql).distinct()
 
+                qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
+                results = 0
+                
+                for query_set in qs:
+                    if len(query_set) == 0:
+                        qs.remove(query_set)
+
+                    for i in query_set:
+                        results += 1
+
 
                 practice_table = PracticeTable(practice_set)
                 doctor_table = DoctorTable(doctor_set)
@@ -67,17 +77,7 @@ def home(request):
                 announcement_table = AnnouncementTable(announcement_set)
                 newsletter_table = NewsletterTable(newsletter_set)
 
-                qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
-                no_results = []
 
-                results = 0
-                for query_set in qs:
-                    if len(query_set) == 0:
-                        no_results.append(query_set)
-                        #TODO: find a way to render only tables with at least one result in them
-
-                    for i in query_set:
-                        results += 1    
     
                 return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
                                                                 'doctor_table':doctor_table, 
