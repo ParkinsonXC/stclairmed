@@ -114,6 +114,21 @@ a {
   padding: 60px 50px;
 }
 
+.carousel-inner img {
+  margin: auto;
+  max-height: 220px;
+  max-width: 220px;
+}
+
+.carousel {
+  width: 640px;
+  height:175px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+  bottom: 75%;
+}
 
 hr {
   display: block;
