@@ -1,5 +1,6 @@
 body {
   font-family: 'Nunito', sans-serif;
+  padding-top: 47px;
 }
 
 pre {
@@ -85,7 +86,8 @@ a {
 
 .jumbotron {
   padding: 100px 25px;
-  background: linear-gradient(rgb(84, 188, 236) 70%, rgba(255,255,255, 1));
+  background: rgb(84, 188, 236) 70%;
+  max-height: 425px;
 }
 
 
@@ -114,15 +116,16 @@ a {
   padding: 60px 50px;
 }
 
+
 .carousel-inner img {
   margin: auto;
   max-height: 220px;
   max-width: 220px;
 }
 
-.carousel {
-  height:175px;
-}
+/* .carousel {
+  height:250px;
+} */
 
 .carousel-control-prev,
 .carousel-control-next{
