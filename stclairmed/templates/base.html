@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">St. Clair Medical Society</a>
+    <a class="navbar-brand" href="{% url 'home' %}">SCCMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,13 +40,25 @@
     {% endblock body %}
 
     <footer id="myFooter">
-      <div class="container bg-grey">
-        <ul>
-          <li><a href="{% url 'home' %}#hospitals">Hospital Information</a></li>
-          <li><a href="{% url 'home' %}#contact">Contact us</a></li>
-          <li><a href="{% url 'directory' %}">Search Practices</a></li>
-        </ul>
-        <p class="footer-copyright">2018 Copyright Text</p>
+      <div class="container-fluid bg-grey" style="padding-bottom: 0px; padding-top:30px;">
+        <div class="row align-items-center">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-2 text-center">
+              <a href="{% url 'newsletter' %}#subscribe">Subscribe to Newsletter</a>
+          </div>
+          <div class="col-sm-2 text-center">
+              <a href="{% url 'home' %}#contact">Contact Us</a>
+          </div>
+          <div class="col-sm-2 text-center">
+              <a href="{% url 'directory' %}">Directory</a>
+          </div>        
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <br>
+              <p class="footer-copyright">Saint Clair County Medical Society &copy; 2018</p>
+          </div>           
+        </div>
       </div>
     </footer>
 

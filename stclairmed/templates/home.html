@@ -12,6 +12,13 @@
       {% csrf_token %}
       {% include 'includes/supersearch_form.html' %}
     </form>
+    {% if super_error %}
+    <div class="row text-center">
+      <div class="col-sm-12">
+          <small class="text-center" style="color:red;">{{super_error}}</small>
+      </div> 
+    </div>
+    {% endif %}   
 </div>
 
 
@@ -141,7 +148,7 @@
     </div><!--col-->
 
     <div class="col-sm-7"><!--add form for under here-->
-      <form method="post" name="contact" value="contact" novalidate>
+      <form method="post" name="contact" id="contact" value="contact" novalidate>
       {% csrf_token %}
       {% include 'includes/contact_form.html' %}
       </form>

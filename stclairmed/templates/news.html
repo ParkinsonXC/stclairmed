@@ -49,16 +49,16 @@
         {% endif %}
                 <div class="row align-items-left">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 text-center">
                         <h3>{{ announcement.title }}</h3>
                         <hr>
                     </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5 text-center">
                         <br>
-                        <p class="text-center">{{ announcement.body }}</p>
+                        <p class="overflow-wrap">{{ announcement.body|linebreaks }}</p>
                         <br>
                     </div>
                     <div class="col-sm-3">
@@ -80,16 +80,16 @@
         {% endif %}
                 <div class="row align-items-left">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 text-center">
                         <h3>{{ announcement.title }}</h3>
                         <hr>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 text-center">
                         <br>
-                        <p class="text-center">{{ announcement.body }}</p>
+                        <p class="overflow-wrap">{{ announcement.body|linebreaks }}</p>
                         <br>
                         <h6 class="text-right">{{ announcement.date }} {{ announcement.time }}</h6>
                     </div>

@@ -85,8 +85,9 @@ def unsubscribe(request):
             sent_unsub_link_confirmation = "An E-Mail containing the unsubscription confirmation link has been sent to " + unsub.email
             return render(request, 'unsubscribe.html', {'form':form, 'unsubconf':sent_unsub_link_confirmation})
         else:
-            form = SubForm()
-            return render(request, 'newsletter.html', {"form" : form})
+            form = UnsubForm()
+            error = 'Must enter valid Email address'
+            return render(request, 'unsubscribe.html', {"form" : form, "error": error})
     else:
         form = UnsubForm()
 

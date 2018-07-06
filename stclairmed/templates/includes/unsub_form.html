@@ -3,22 +3,24 @@
 <form method="post" novalidate id="sub-form">
     {% csrf_token %}
     <div class="container">
-        {% for field in form %}
-            {% if form.is_bound %}
-                {% if field.errors %}
-                    {% render_field field class="form-control is-invalid" %}
-                    {% for error in field.errors %}
-                        <small class="invalid-feedback">{{error}}</small>
-                    {% endfor %}
-                {% else %}
-                    {% render_field field class="form-control is-valid" %}
-                {% endif %}
-            {%else %}
-                {% render_field field class="form-control" %}       
+        {% if error %}
+            {% render_field form.email class="form-control is-invalid" %}
+            <small class="invalid-feedback">{{error}}</small>
+        {% else %}
+            {% render_field form.email class="form-control" %}
+        {% endif %}
+        <!-- {% for field in form %}
+            {% if field.errors %}
+                {% render_field field class="form-control is-invalid" %}
+                {% for error in field.errors %}
+                    <small class="invalid-feedback">{{error}}</small>
+                {% endfor %}
+            {% else %}
+                {% render_field field class="form-control is-valid" %}
             {% endif %}
             <small style="color:rgb(185, 5, 44);">{{ error }}</small>
             <br>
-        {% endfor %}
+        {% endfor %} -->
     </div>
 
 <br>

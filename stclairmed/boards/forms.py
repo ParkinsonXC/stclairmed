@@ -1,18 +1,17 @@
 from django import forms
-from .models import Specialty, Practice
 
 class SearchForm(forms.Form):
     term = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Keywords'}),
+        min_length=1,
         max_length=35,
-        help_text = "The max length of the name is 35 letters."        
         )
 
     choices = (('practices', 'Practices',),('doctors', 'Doctors',),('all', 'All',))
     my_choice_field = forms.ChoiceField(
-        widget=forms.RadioSelect(), 
-        choices=choices,
-        help_text="Test test")
-    
+        widget=forms.RadioSelect(),
+        choices=choices
+        )
 
     class Meta:
         fields = ['term', 'field']
