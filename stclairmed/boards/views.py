@@ -13,6 +13,8 @@ from news.models import Announcement
 from news.tables import AnnouncementTable
 from newsletters.models import Newsletter
 from newsletters.tables import NewsletterTable
+from officers.models import Officer, Role
+from officers.tables import OfficerTable
 
 # Create your views here.
 def home(request):
@@ -58,6 +60,16 @@ def home(request):
                 announcement_set = Announcement.objects.filter(announcement_sql).distinct()
                 newsletter_set = Newsletter.objects.filter(newsletter_sql).distinct()
 
+                qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
+                results = 0
+                
+                for query_set in qs:
+                    if len(query_set) == 0:
+                        qs.remove(query_set)
+
+                    for i in query_set:
+                        results += 1
+
 
                 practice_table = PracticeTable(practice_set)
                 doctor_table = DoctorTable(doctor_set)
@@ -65,11 +77,8 @@ def home(request):
                 announcement_table = AnnouncementTable(announcement_set)
                 newsletter_table = NewsletterTable(newsletter_set)
 
-                qs = [practice_set, doctor_set, event_set, announcement_set, newsletter_set]
-                results = 0
-                for query_set in qs:
-                    for i in query_set:
-                        results += 1    
+
+    
                 return render(request, 'supersearch_results.html', {'results':results, 'practice_table':practice_table,
                                                                 'doctor_table':doctor_table, 
                                                                 'event_table':event_table,
@@ -81,7 +90,10 @@ def home(request):
                 supersearch_form = SuperSearch()
                 return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form': supersearch_form, 'super_error':error})          
  
-    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form})
+    president = Officer.objects.get(position="President")
+    
+    return render(request, 'home.html', {'contact_form':contact_form, 'supersearch_form':supersearch_form,
+                                            'president':president})
 
 def directory(request):
     #TODO: Handle post requests

@@ -56,3 +56,9 @@ $(window).scroll(function() {
     });
 
   })
+
+
+//Allows the div to fade onload
+  $(document).ready(function(){
+    $(".fadein").hide(0).fadeIn(1500)
+});

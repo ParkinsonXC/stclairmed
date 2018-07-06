@@ -1,0 +1,186 @@
+<div class="row">
+
+        <div class="col-sm-6 fadein">
+          <div class = "text-center">
+              <h1>Welcome to the St. Clair County Medical Society</h1>
+              <h5>For over 135 years the SCCMS has worked to maintain 
+                quality medical care in St. Clair County.</h5>
+              <p>You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
+                to search for doctors and practices.
+              </p>
+              <form method="post" class="form-inline justify-content-center" name="supersearch" value="supersearch" novalidate>
+                {% csrf_token %}
+                {% include 'includes/supersearch_form.html' %}
+              </form>
+              {% if super_error %}
+              <div class="row text-center">
+                <div class="col-sm-12">
+                    <small class="text-center" style="color:red;">{{super_error}}</small>
+                </div> 
+              </div>
+              {% endif %}
+              <br/>
+          </div>
+      
+        </div>col
+      
+        <div class="col-sm-6 fadein">
+      
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+      
+              <div class="carousel-item active">
+      
+                <div class="text-center">
+                  <h1>President of SCCMS</h1>
+                </div>
+                <div class="text-center">
+                  <a href="#contact"><h5>{{president}}</h5></a>
+                  <img src="https://comps.canstockphoto.com/closeup-face-men-doctor-stock-photo_csp51692241.jpg"/>
+                </div>
+      
+              </div>
+      
+              <div class="carousel-item">
+                <img class="d-block" src="media/media/MedSocEmblem.png" alt="Second slide"/>
+                <a href="{% url 'officers' %}"><h3 class="text-center">Click here to view our other officers</h3></a>
+              </div>
+            </div>
+      
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+      
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+      
+          </div><!--carousel-->
+            
+        </div><!--col-->
+      </div><!--row-->
+
+
+
+
+
+      <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">SCCMS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="nav navbar-nav ml-auto">
+                  <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'directory' %}">Directory</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">News</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'newsletter' %}">Newsletters</a></li>
+              </ul>
+            </div>
+            </div>
+          </nav>
+
+
+
+
+
+
+
+          <div class="container">
+                <div id="servicesCarousel" class="carousel slide" data-ride="carousel">
+        
+                    <ol class="carousel-indicators">
+                      <li data-target="#servicesCarousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#servicesCarousel" data-slide-to="1"></li>
+                      <li data-target="#servicesCarousel" data-slide-to="2"></li>
+                    </ol>
+                    
+                    <div class="carousel-inner">
+          
+                      <div class="carousel-item active">
+                        <div class="container text-center">
+                          <h3>Our President</h3>
+                          <p>{{president}}</p>
+                          <img src="https://comps.canstockphoto.com/closeup-face-men-doctor-stock-photo_csp51692241.jpg"/>
+                        </div>
+                      </div>
+          
+                      <div class="carousel-item">
+                        <div class="container text-center">
+                          <h3>Check out our newsletter</h3>
+                          <img src="/media/media/February_2018_New_Letter_Yp8BdMt-page-001_YDZwxFh.jpg"/>
+                        </div>
+                      </div>
+          
+                      <div class="carousel-item">
+                        <div class="container text-center">
+                          <h3>Stock Title</h3>
+                          <img class="" src="https://image.shutterstock.com/image-photo/medical-students-listening-sitting-desk-260nw-244062976.jpg" alt="Third slide">
+                        </div>
+                      </div>
+          
+                    </div>
+          
+                    <a class="carousel-control-prev" href="#servicesCarousel" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+          
+                    <a class="carousel-control-next" href="#servicesCarousel" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+          
+                  </div>
+            </div>
+
+
+
+
+            <div class="jumbotron">
+
+                    <div class="row">
+                      <div class="col-sm-6 fadein">
+                
+                        <div class="container">
+                          <h1>Welcome to the St. Clair Medical Society </h1>
+                          <h5>For over 135 years the SCCMS has worked to maintain 
+                              quality medical care in St. Clair County.</h5>
+                            <p>
+                              You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
+                              to search for doctors and practices.
+                            </p>
+                
+                            <form method="post" class="form-inline justify-content-center" name="supersearch" value="supersearch" novalidate>
+                                {% csrf_token %}
+                                {% include 'includes/supersearch_form.html' %}
+                            </form>
+                              {% if super_error %}
+                              <div class="row text-center">
+                                <div class="col-sm-12">
+                                    <small class="text-center" style="color:red;">{{super_error}}</small>
+                                </div> 
+                              </div>
+                              {% endif %}
+                
+                        </div>
+                      </div><!--col-->
+                
+                      <div class="col-sm-6 fadein">
+                
+                        <div class="container">
+                          <h1 class="text-center">TEST</h1>
+                        </div>
+                
+                        
+                
+                      </div><!--col-->
+                      
+                
+                    </div><!--row-->
+                
+                </div> jumbo
