@@ -87,7 +87,6 @@ a {
 .jumbotron {
   padding: 100px 25px;
   background: rgb(84, 188, 236) 70%;
-  max-height: 425px;
 }
 
 
@@ -119,8 +118,8 @@ a {
 
 .carousel-inner img {
   margin: auto;
-  max-width:300px;
-  max-height: 300px;
+  max-width:250px;
+  max-height: 250px;
 }
 
 .carousel-control-prev,

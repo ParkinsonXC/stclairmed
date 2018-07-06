@@ -2,23 +2,21 @@
 
 {% block body %}
 
-<div class="jumbotron row">
+<div class = "jumbotron text-center">
 
-  <div class="col-sm-6 fadein">
 
-    <section class="container">
-      <h1>Welcome to the St. Clair Medical Society </h1>
-      <h5>For over 135 years the SCCMS has worked to maintain 
-          quality medical care in St. Clair County.</h5>
-        <p>
-          You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
-          to search for doctors and practices.
-        </p>
-
-        <form method="post" class="form-inline justify-content-center" name="supersearch" value="supersearch" novalidate>
+    <div class="row">
+      <div class="col-sm-6">
+          <h1>Welcome to the St. Clair County Medical Society</h1>
+          <h5>For over 135 years the SCCMS has worked to maintain 
+            quality medical care in St. Clair County.</h5>
+          <p>You may search for keywords here, or navigate to our <a href="{% url 'directory' %}">directory</a> 
+            to search for doctors and practices.
+          </p>
+          <form method="post" class="form-inline justify-content-center" name="supersearch" value="supersearch" novalidate>
             {% csrf_token %}
             {% include 'includes/supersearch_form.html' %}
-        </form>
+          </form>
           {% if super_error %}
           <div class="row text-center">
             <div class="col-sm-12">
@@ -26,20 +24,19 @@
             </div> 
           </div>
           {% endif %}
+      </div>
 
-    </section>
-  </div><!--col-->
 
-  <div class="col-sm-6 fadein">
 
-    
+      <div class="col-sm-6 text-center">
 
-  </div><!--col-->
+      </div><!--col-->
+          
   
+  </div>
 
-</div><!--row-->
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
       <h2>About St. Clair Medical Society</h2>
